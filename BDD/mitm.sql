@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 01 avr. 2022 à 07:22
+-- Généré le : ven. 01 avr. 2022 à 08:23
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -43,11 +43,20 @@ CREATE TABLE IF NOT EXISTS `binome` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` varchar(8) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idEleve` varchar(16) NOT NULL,
   `login` varchar(20) NOT NULL,
-  `mot_de_passe` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `idEleve`, `login`, `message`) VALUES
+(1, '8DF51', 'Test', 'MonMessage'),
+(2, '8DF67', 'Test2', 'MonMessage');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
