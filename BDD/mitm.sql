@@ -43,9 +43,10 @@ CREATE TABLE IF NOT EXISTS `binome` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` varchar(8) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idEleve` varchar(16) NOT NULL,
   `login` varchar(20) NOT NULL,
-  `mot_de_passe` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
