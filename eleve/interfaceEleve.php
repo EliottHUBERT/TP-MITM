@@ -5,8 +5,7 @@ include ('../fonction.php');
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <META HTTP-EQUIV="Refresh" CONTENT="; URL=http://localhost/TP-MITM/briefing.php"> 
+        <meta charset="UTF-8"> 
         <link href="../Styles/styles.css" rel="stylesheet" type="text/css">
         <title> Briefing MITM </title>
     </head>
@@ -16,67 +15,13 @@ include ('../fonction.php');
                <br>
                 <p>qsd</p>
                 <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
                 <br>
            </div>
         </div>
         <div class="console_reponse">
             <div class="reponse">
                 <br>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsdsq</p><p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
-                <p>qsd</p>
+                <p>sqdqsd</p>
                 <br>
             </div>
         </div>
