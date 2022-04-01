@@ -63,3 +63,54 @@
     text-align:center;
     position:relative;
 }
+
+.console_requete{
+    height: 250px;
+    overflow: auto;
+    margin: 0 auto;
+    width: 72%;
+    background-color:rgb(21, 20, 20);
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+
+.console_requete .requete{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    width: 70%;
+    margin: -5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.console_requete .requete p{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+.console_reponse{
+    height: 250px;
+    overflow: auto;
+    margin: 0 auto;
+    width: 72%;
+    background-color:rgb(21, 20, 20);
+}
+
+.console_reponse .reponse{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    width: 70%;
+    margin: -5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.console_reponse .reponse p{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    width: 70%;
+    margin: 0 auto;
+}
