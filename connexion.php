@@ -51,7 +51,7 @@
                             Entrez le nom de votre binome
                             <input name='nom_binome' class='nom_utilisateur'  placeholder='nom binome' required></input>
                             </br>
-                            <input type='hidden' name='nomutilisateur'>
+                            <input type='hidden' name='nomutilisateur' id='nom_utilisateur' required>
                             <input type='submit' value='Valider' class='BoutonValidation' >
                         </form>
                         ";
@@ -62,7 +62,7 @@
                         $requete = "SELECT 'id' FROM `utilisateur` WHERE (`login`='$le_binome');";
                         $larequete = mysqli_query($connexion,$requete);
                         $resultatrequete=mysqli_fetch_array($larequete);
-                        $lid_du_binome=$resultatrequete['id'];
+                        $lid_du_binome=$resultatrequete[];
                         echo $lid_du_binome;
                     }
                 }
