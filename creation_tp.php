@@ -42,7 +42,12 @@
                         <input type='submit' value='Valider' class='BoutonValidation' >
                 </div>";
                 
+<<<<<<< HEAD
             }                
+=======
+            }
+                
+>>>>>>> 5e92b0cbc8bb8a70ee7d60bb4c8d4c334f2d9dce
             ?>
     </div>
 
