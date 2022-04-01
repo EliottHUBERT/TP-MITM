@@ -36,10 +36,13 @@
                         <input name='nom_utilisateur".$i."' placeholder='Nom utilisateur' class='alignement_input' required>
 
                         </br>
+                        </br>
                     ";
                 }
                 echo"
-                        <input type='submit' value='Valider' class='BoutonValidation' >
+                <center>
+                    <input type='submit' value='Valider' class='BoutonValidation' >
+                </center>
                 </div>";
                 
             }

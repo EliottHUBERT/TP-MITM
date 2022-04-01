@@ -1,4 +1,4 @@
-html>
+<html>
     <head>
         <meta charset="utf-8">
         <title></title>
@@ -11,9 +11,19 @@ html>
 
     <body>
         <form method='POST'>
-        De combien d'utilisateur avez-vous besoin ?"."
-                        <input type='number' name='nombreutilisateurs' class='demande_nom_utilisateur' id='nombre_utilisateurs' min='1' max='40' placeholder='Nombre de participants' required></input>
-                            </br>
-                        <input type='submit' value='Valider' class='BoutonValidation' >
-                    </form>
+        Entrez votre nom d'utilisateur
+            <input name='nomutilisateur' class='demande_nom_utilisateur' id='nom_utilisateur'  placeholder='nom utilisateur' required></input>
+                </br>
+            <input type='submit' value='Valider' class='BoutonValidation' >
+            <?php
+                if (isset($_POST["nomutilisateur"])){
+                    $nom_utilisateur=$_POST["nomutilisateur"];
+                    if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
+                        $_SESSION["nomutilisateur"]=$nom_utilisateur;
+                        header("professeur/professeur.php");
+                    }
+                }
+            ?>
+        </form>
     </body>
+</html>
