@@ -42,9 +42,7 @@
                         <input type='submit' value='Valider' class='BoutonValidation' >
                 </div>";
                 
-            }
-#test
-                
+            }                
             ?>
     </div>
 
