@@ -56,7 +56,8 @@ CREATE TABLE IF NOT EXISTS `table_utile` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` varchar(8) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idEleve` varchar(16) NOT NULL,
   `login` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
