@@ -15,6 +15,10 @@ function afficherTableId(){
     }
 }
 
+function test($test) {
+    echo $test;
+}
+
 
 
 ?>
