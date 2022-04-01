@@ -49,8 +49,9 @@
 .nom_utilisateur{
 
     border-radius: 10px;
-    width:10%;
-    
+    width:20%;
+    margin-top:20%;
+    text-align: center;
 }
 
 .alignement_au_centre{
