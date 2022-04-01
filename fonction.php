@@ -19,7 +19,7 @@ function idEleve($id){
 function loginEleve($id){
     $con = mysqli_connect('localhost','root','','mitm');
     if($con){  
-        $requete = "SELECT * 
+        $requete = "SELECT *
         FROM utilisateur
         WHERE id = $id;";
         
@@ -30,6 +30,18 @@ function loginEleve($id){
             return $login;
         }
     }
+}
+
+function afficherEtudiantId() {
+    $con = mysqli_connect('localhost','root','','mitm');
+    $requete2 = "SELECT count(*) 
+    FROM utilisateur;";
+    $result2 = mysqli_query($con, $requete2);
+    echo $result2;
+}
+
+function test() {
+    echo 'test';
 }
 
 
