@@ -10,19 +10,30 @@
     </head>
 
     <body>
-        <form method='POST'>
-        Entrez votre nom d'utilisateur
-            <input name='nomutilisateur' class='demande_nom_utilisateur' id='nom_utilisateur'  placeholder='nom utilisateur' required></input>
+        <?php
+        if(isset($_POST["nombreutilisateurs"])==False){
+            echo"
+            <form method='POST'>
+                Entrez votre nom d'utilisateur
+                <input name='nomutilisateur' class='nom_utilisateur' id='nom_utilisateur'  placeholder='nom utilisateur' required></input>
                 </br>
-            <input type='submit' value='Valider' class='BoutonValidation' >
-            <?php
-                if (isset($_POST["nomutilisateur"])){
-                    $nom_utilisateur=$_POST["nomutilisateur"];
-                    if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
-                        $_SESSION["nomutilisateur"]=$nom_utilisateur;
-                        header("professeur/professeur.php");
-                    }
-                }
+                <input type='submit' value='Valider' class='BoutonValidation' >
+            </form>";
+        }
+        
+        
+        if (isset($_POST["nomutilisateur"])){
+            $nom_utilisateur=$_POST["nomutilisateur"];
+            if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
+                echo"lenom";
+                $_SESSION["nomutilisateur"]=$nom_utilisateur;
+                header('location: professeur/professeur.php');
+            }
+            else{
+                
+
+            }
+        }
             ?>
         </form>
     </body>
