@@ -1,0 +1,47 @@
+
+*{
+    font-size: 1.05em;
+    font-family: consolas;
+    background-color:rgb(80, 77, 77)
+}
+.briefing{
+    margin: 0 auto;
+    border-radius: 2%;
+    width: 72%;
+    background-color:rgb(21, 20, 20);
+}
+
+.briefing .Texte{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.briefing .Texte p{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: justify;
+}
+
+.briefing .Texte #Titre{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+}
+
+.briefing .Texte ul{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+    list-style: disc;
+}
+
+.briefing .Texte li{
+    background-color:rgb(21, 20, 20);
+    color: rgb(14, 204, 14);
+}

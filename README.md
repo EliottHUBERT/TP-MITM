@@ -1,14 +1,14 @@
 =============================# TP-MITM #============================
 
 Projet réaliser par :   
-    -BOUVIER Gaston
-    -RICHARD-DUCROS Nathan
-    -HUBERT Eliott
+    -BOUVIER Gaston  
+    -RICHARD-DUCROS Nathan  
+    -HUBERT Eliott  
+    -BARRAT Adrien
 
-Ce projet est un TP de BTS SIO qui a été crée par LANGLOY Alban qui nous à demander d'automatisé celui-ci afin de faciliter sa mise en pratique lors des prochaine année.
+Ce projet est un TP de BTS SIO qui a été crée par LANGLOY Alban qui nous à demander d'automatiser celui-ci afin de faciliter sa mise en pratique lors des prochaines années.
 
-Ce TP est une introduction à l'attaque du Man In The Middle (MITM),
-et consiste à celà :
+Ce TP est une introduction à l'attaque du Man In The middle (MITM), et consiste à cela :
 
     Sujet : Mon nom est « personne ».
     
