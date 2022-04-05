@@ -62,7 +62,7 @@
                         $requete = "SELECT 'id' FROM `utilisateur` WHERE (`login`='$le_binome');";
                         $larequete = mysqli_query($connexion,$requete);
                         $resultatrequete=mysqli_fetch_array($larequete);
-                        $lid_du_binome=$resultatrequete[];
+                        $lid_du_binome=$resultatrequete['id'];
                         echo $lid_du_binome;
                     }
                 }
