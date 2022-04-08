@@ -13,6 +13,7 @@
     
     <body>
         <?php
+        
         if(isset($_POST["nomutilisateur"])==False){
             echo"
             <form method='POST'>
@@ -22,7 +23,7 @@
                 <input type='submit' value='Valider' class='BoutonValidation' >
             </form>";
         }
-        
+        GLOBAL $nom_utilisateur;
         
         if (isset($_POST["nomutilisateur"])){
             $nom_utilisateur=$_POST["nomutilisateur"];
@@ -30,7 +31,7 @@
                 $_SESSION["nomutilisateur"]='langloy';
                 header('location: professeur/professeur.php');
             }
-            else{
+            elseif(isset($nom_utilisateur)){
                 $lasuite=['A','Z','E','R','T','Y','U','I','O','P','Q','S','D','F','G','H','J','K','L','M','W','X','C','V','B','N','1','2','3','4','5','6','7','8','9','!','?'];
                 $idutilisateur='';
                 $_SESSION["nomutilisateur"]=$nom_utilisateur;
@@ -40,27 +41,41 @@
                     $laval=$lasuite[$indice];
                     $idutilisateur=strval($idutilisateur).$laval;
                 }
+                $les_utilisateurs=[];
+                $requete = "SELECT `login` FROM `utilisateur` ;";
+                $resultat = $connexion->query($requete);
+                while ($ligne = $resultat->fetch_assoc()) {
+                    echo $ligne['login'];
+                    array_push($les_utilisateurs,$ligne['login']);
+                }
+                
+                print_r($les_utilisateurs);
                 
                 
                 if($connexion){
-                    $requete = "INSERT INTO `utilisateur` (`id`, `idEleve`, `login`, `message`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
-                    $larequete = mysqli_query($connexion,$requete);
-                    echo'insertion réussie</br>';
-                
+                    if(in_array($nom_utilisateur,$les_utilisateurs)==false){
+                        echo"connexion";
+                        $requete = "INSERT INTO `utilisateur` (`id`, `idEleve`, `login`, `message`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
+                        $larequete = mysqli_query($connexion,$requete);
+                        echo'insertion réussie</br>';
+                        
+                    }
+
                     echo"
                         <form method='POST'>
                             Entrez le nom de votre binome
                             <input name='nom_binome' class='nom_utilisateur'  placeholder='nom binome' required></input>
                             </br>
-                            <input type='hidden' name='nomutilisateur' id='nom_utilisateur' required>
+                            <input type='hidden' name='nomutilisateur' id='nom_utilisateur' value='".$nom_utilisateur."'required>
                             <input type='submit' value='Valider' class='BoutonValidation' >
                         </form>
                         ";
 
                     if (isset($_POST["nom_binome"])){
                         if($_POST["nom_binome"]==$nom_utilisateur){
-                            echo"erreur votre nom de binom est le meme que votre nom d'utilisateur";
+                            echo"erreur votre nom de binome est le meme que votre nom d'utilisateur";
                         }
+                        
                         else {
                             $le_binome=$_POST["nom_binome"];
 
@@ -69,13 +84,14 @@
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $lid_du_binome=$resultatrequete[0];
                             echo $lid_du_binome;
-                            
+                            ////////////////////////////////////////////////////////////////
                             
                             $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$nom_utilisateur';";
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $votreid=$resultatrequete[0];
                             echo $votreid;
+                            ////////////////////////////////////////////////////////////////
 
                             $requete = "INSERT INTO `binome` (`ID1`, `ID2`) VALUES ('$votreid', '$lid_du_binome');";
                             $larequete = mysqli_query($connexion,$requete);

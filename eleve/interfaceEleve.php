@@ -1,10 +1,8 @@
 <?php
 session_set_cookie_params(0);
-session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 ini_set('display_errors', 'off');
-$idses = $_SESSION['id'];
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 ?>
 
@@ -19,14 +17,16 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
         <form method="post">
             <select id="bouton" name="actionBien">
                 <option value="valeur0"></option>
-                <option value="valeur1">Afficher les ID/Etudiants</option>
+                <option value="valeur1" selected>Afficher les ID/Etudiants</option>
                 <option value="valeur2">Etablir la communication avec un ID</option>
                 <option value="valeur3">Identification via login / pass auprès d’un ID</option>
                 <option value="valeur4">Message secret auprès d’un ID</option>
             </select>
+            
             <br>    
             <br>
-            Entrez l'id si besoin : <input type="text" name="idEleve">
+            Entrez l'id si besoin : <input type='text' name='idEleve'>
+            
             <input type="submit" value="Valider">
         </form>
 
@@ -39,12 +39,13 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $mysqli = new mysqli("localhost", "root", "", "mitm");
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
+                    $idrep = $_COOKIE['id'];
                     while ($ligne = $resultat->fetch_assoc()) {
-                        $idses = $_SESSION['id'];
-                        $_SESSION['reponse'[$idses]] = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
-                        $idses = $idses +1;
-                        $_SESSION['id'] = $idses;
+                        $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     }
+                    setcookie('id', $idrep);
                 }
 
 
@@ -52,16 +53,20 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                 if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
                     $idEleveCommunicant = $_POST["idEleve"];
 
-                    $requete_presence_formateur = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
-                    $presence_formateur = mysqli_query($con, $requete_presence_formateur);
-                    if(mysqli_num_rows($presence_formateur)) {
-                        echo 'la communication est déjà établie';
+                    $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
+                    $presence_com = mysqli_query($con, $requete_presence_com);
+                    $idrep = $_COOKIE['id'];
+                    if(mysqli_num_rows($presence_com)) {
+                        echo 'la communication est déjà établie avec cet id';
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
                         $result = mysqli_query($con, $requete1);
-                        echo 'connexion etablie';
+                        $reponse ='communication établie<br>';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     }
+                    setcookie('id', $idrep);
                 }
 
 
@@ -75,8 +80,6 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                 if($_POST['actionBien'] == "valeur4") {
 
                 }
-
-
             }
         ?>
         
@@ -84,16 +87,13 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
             <div class="reponse">
                 <br>
                 <p><?php 
-                    $idses = $_SESSION['id'];
-                    foreach(range(0, $idses-1)as $num){
-                        echo $_SESSION['reponse'[$num]];
+                    $idrep = $_COOKIE['id'];
+                    foreach(range(0, $idrep-1)as $num){
+                        echo $_COOKIE[$num];
                     }
-                ?></p>
+                ?><br></p>
                 <br>
             </div>
         </div>
     </body>
 </html>
-<?php 
-// session_destroy()
-?>
