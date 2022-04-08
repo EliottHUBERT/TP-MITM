@@ -26,13 +26,8 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
             
             <br>    
             <br>
-            <?php
-            if (isset($_POST['actionBien'])){
-                if ($_POST['actionBien'] == 'valeur2' || $_POST['actionBien'] == 'valeur3' || $_POST['actionBien'] == 'valeur4') {
-                    echo "Entrez l'id si besoin : <input type='text' name='idEleve'>";
-                }
-            }
-            ?>
+            Entrez l'id si besoin : <input type='text' name='idEleve'>
+            
             <input type="submit" value="Valider">
         </form>
 
@@ -60,9 +55,9 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $idEleveCommunicant = $_POST["idEleve"];
 
                     $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
-                    $presence_formateur = mysqli_query($con, $requete_presence_formateur);
+                    $presence_com = mysqli_query($con, $requete_presence_com);
                     $idrep = $_COOKIE['id'];
-                    if(mysqli_num_rows($presence_formateur)) {
+                    if(mysqli_num_rows($presence_com)) {
                         echo 'la communication est déjà établie avec cet id';
                     } 
                     else { 
@@ -84,8 +79,6 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                 if($_POST['actionBien'] == "valeur4") {
 
                 }
-
-
             }
         ?>
         
