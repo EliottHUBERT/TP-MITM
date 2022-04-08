@@ -33,6 +33,12 @@ function loginEleve($id){
 }
 
 
-
+function verifip(){
+    $ip=$_SERVER['REMOTE_ADDR'];
+    $ipserveur=$_SERVER['SERVER_ADDR'];
+    if ($ip==$ipserveur){
+        return TRUE;
+    }
+}
 
 ?>
