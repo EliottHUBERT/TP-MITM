@@ -5,6 +5,7 @@ include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 ini_set('display_errors', 'off');
 $idses = $_SESSION['id'];
+$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ $idses = $_SESSION['id'];
     <body>
         <form method="post">
             <select id="bouton" name="actionBien">
+                <option value="valeur0"></option>
                 <option value="valeur1">Afficher les ID/Etudiants</option>
                 <option value="valeur2">Etablir la communication avec un ID</option>
                 <option value="valeur3">Identification via login / pass auprès d’un ID</option>
@@ -48,10 +50,10 @@ $idses = $_SESSION['id'];
 
                 //Etablir la communication avec un ID
                 if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
-                    $idses = $_SESSION['id'];
-                    $_SESSION['reponse'[$idses]] = "test <br>";
-                    $idses = $idses +1;
-                    $_SESSION['id'] = $idses;
+                    $test = $_POST["idEleve"];
+                   $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$test');";
+                   $result = mysqli_query($con, $requete1);
+                   echo 'connexion etablie';
                 }
 
 
