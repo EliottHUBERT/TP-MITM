@@ -78,8 +78,16 @@ INSERT INTO `utilisateur` (`id`, `idEleve`, `login`, `message`) VALUES
 (10, 'I3U2C9JPLNM', 'qwerty', ''),
 (8, '3VG?DLH8OKO', 'azerty', ''),
 (36, 'P96GEVSKEP7', '', ''),
-(35, 'TXVTHPU!O79', 'gaston', '');
+(35, 'TXVTHPU!O79', 'gastonLeTocard', '');
 COMMIT;
+
+DROP TABLE IF EXISTS `communication`;
+CREATE TABLE IF NOT EXISTS `communication` (
+  `idCommunication` int AUTO_INCREMENT,
+  `idEleve1` varchar(16) NOT NULL,
+  `idEleve2` varchar(16) NOT NULL,
+  PRIMARY KEY (`idCommunication`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
