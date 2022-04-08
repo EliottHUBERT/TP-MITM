@@ -19,14 +19,21 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
         <form method="post">
             <select id="bouton" name="actionBien">
                 <option value="valeur0"></option>
-                <option value="valeur1">Afficher les ID/Etudiants</option>
+                <option value="valeur1" selected>Afficher les ID/Etudiants</option>
                 <option value="valeur2">Etablir la communication avec un ID</option>
                 <option value="valeur3">Identification via login / pass auprès d’un ID</option>
                 <option value="valeur4">Message secret auprès d’un ID</option>
             </select>
+            
             <br>    
             <br>
-            Entrez l'id si besoin : <input type="text" name="idEleve">
+            <?php
+            if (isset($_POST['actionBien'])){
+                if ($_POST['actionBien'] == 'valeur2' || $_POST['actionBien'] == 'valeur3' || $_POST['actionBien'] == 'valeur4') {
+                    echo "Entrez l'id si besoin : <input type='text' name='idEleve'>";
+                }
+            }
+            ?>
             <input type="submit" value="Valider">
         </form>
 
@@ -52,15 +59,15 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                 if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
                     $idEleveCommunicant = $_POST["idEleve"];
 
-                    $requete_presence_formateur = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
+                    $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
                     $presence_formateur = mysqli_query($con, $requete_presence_formateur);
                     if(mysqli_num_rows($presence_formateur)) {
-                        echo 'la communication est déjà établie';
+                        echo 'la communication est déjà établie avec cet id';
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
                         $result = mysqli_query($con, $requete1);
-                        echo 'connexion etablie';
+                        echo 'communication établie';
                     }
                 }
 
