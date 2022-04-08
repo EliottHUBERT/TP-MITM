@@ -14,13 +14,16 @@ ini_set('display_errors', 'off');
         <title> Interface Eleve </title>
     </head>
     <body>
-    <form method="post">
+        <form method="post">
             <select id="bouton" name="actionBien">
                 <option value="valeur1">Afficher les ID/Etudiants</option>
                 <option value="valeur2">Etablir la communication avec un ID</option>
                 <option value="valeur3">Identification via login / pass auprès d’un ID</option>
                 <option value="valeur4">Message secret auprès d’un ID</option>
             </select>
+            <br>    
+            <br>
+            Entrez l'id si besoin : <input type="text" name="idEleve">
             <input type="submit" value="Valider">
         </form>
 
@@ -41,8 +44,8 @@ ini_set('display_errors', 'off');
 
 
                 //Etablir la communication avec un ID
-                if($_POST['actionBien'] == "valeur2") {
-
+                if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
+                   echo "test";
                 }
 
 
