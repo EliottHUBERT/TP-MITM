@@ -8,7 +8,7 @@ setcookie('id', $idrep)
 <html>
     <head>
         <meta charset="UTF-8">
-        <META HTTP-EQUIV="Refresh" CONTENT="1; URL=http://localhost/TP-MITM/eleve/interfaceEleve.php"> 
+        <META HTTP-EQUIV="Refresh" CONTENT="1; URL=/TP-MITM/eleve/interfaceEleve.php"> 
         <link href="styles/styles.css" rel="stylesheet" type="text/css">
         <title> Briefing MITM </title>
     </head>
