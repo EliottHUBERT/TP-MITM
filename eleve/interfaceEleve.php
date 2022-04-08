@@ -46,21 +46,29 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 
                 //Etablir la communication avec un ID
                 if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
-                    $test = $_POST["idEleve"];
-                   $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$test');";
-                   $result = mysqli_query($con, $requete1);
-                   echo 'connexion etablie';
+                    $idEleveCommunicant = $_POST["idEleve"];
+
+                    $requete_presence_formateur = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
+                    $presence_formateur = mysqli_query($con, $requete_presence_formateur);
+                    if(mysqli_num_rows($presence_formateur)) {
+                        echo 'la communication est déjà établie';
+                    } 
+                    else { 
+                        $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
+                        $result = mysqli_query($con, $requete1);
+                        echo 'connexion etablie';
+                    }
                 }
 
 
                 //Identification via login / pass auprès d’un ID 
-                if($_POST['actionBien'] == "valeur2") {
+                if($_POST['actionBien'] == "valeur3") {
 
                 }
 
 
                 //Message secret auprès d’un ID
-                if($_POST['actionBien'] == "valeur2") {
+                if($_POST['actionBien'] == "valeur4") {
 
                 }
 
