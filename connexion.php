@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>connexion</title>
         <link rel="stylesheet" href="Styles/styles.css" type="text/css" />
         <?php
            include('Fonction/connexion_sql.php');
