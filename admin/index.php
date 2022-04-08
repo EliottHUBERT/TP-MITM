@@ -1,10 +1,12 @@
 <?php
-$ip=$_SERVER['REMOTE_ADDR'];
-$ipserveur=$_SERVER['SERVER_ADDR'];
-if ($ip!=$ipserveur){
+
+include '../fonction.php';
+if (verifip()){
     header('Location:../connexion.php');
 }
 require ('../Fonction/connexion_sql.php')
+
+
 ?>
 <html lang="fr">
 <head>
