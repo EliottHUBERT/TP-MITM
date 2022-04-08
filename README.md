@@ -12,7 +12,7 @@ Ce TP est une introduction à l'attaque du Man In The middle (MITM), et consiste
 
     Sujet : Mon nom est « personne ».
     
-    Vous allez vous mettre dans la peau d’un hackerͶͷ😏. Votre objectif, communiquer un message secret à votre contact dans le Darkweb. Attention, votre organisation est elle-même ciblé et vous devez également contre attaquer pour arriver à vos fins. Après tout, les données des autres organismes pourront toujours être revendu à big Daddy Langloy ۜ💰
+    Vous allez vous mettre dans la peau d’un hacker😏. Votre objectif, communiquer un message secret à votre contact dans le Darkweb. Attention, votre organisation est elle-même ciblé et vous devez également contre attaquer pour arriver à vos fins. Après tout, les données des autres organismes pourront toujours être revendu à big Daddy Langloy ۜ💰
     
     Objectif du TP: 
         -Obtenir le mot secret de votre binôme : +10 £angloy ۜ💰
