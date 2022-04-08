@@ -1,4 +1,6 @@
 <?php
+session_set_cookie_params(0);
+session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
@@ -27,6 +29,7 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
         </form>
 
         <?php
+            $idses = 0;
             if (isset($_POST['actionBien'])) {
 
                 // Afficher les ID/Etudiants    
@@ -35,7 +38,8 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
                     while ($ligne = $resultat->fetch_assoc()) {
-                        echo $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        $_SESSION['reponse'[$idses]] = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        $idses = $idses +1;
                     }
                 }
 
@@ -67,9 +71,16 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
         <div class="console_reponse">
             <div class="reponse">
                 <br>
-                <p>sqdqsd</p>
+                <p><?php 
+                    foreach(range(0, $idses-1)as $num){
+                        echo $_SESSION['reponse'[$num]];
+                    }
+                ?></p>
                 <br>
             </div>
         </div>
     </body>
 </html>
+<?php 
+session_destroy()
+?>
