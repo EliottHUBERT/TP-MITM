@@ -1,6 +1,9 @@
 <?php
+session_set_cookie_params(0);
+session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
+ini_set('display_errors', 'off');
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +25,7 @@ $con = mysqli_connect('localhost','root','','mitm');
         </form>
 
         <?php
+            $idses = 0;
             if (isset($_POST['actionBien'])) {
 
                 // Afficher les ID/Etudiants    
@@ -30,7 +34,8 @@ $con = mysqli_connect('localhost','root','','mitm');
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
                     while ($ligne = $resultat->fetch_assoc()) {
-                        echo $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        $_SESSION['reponse'[$idses]] = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        $idses = $idses +1;
                     }
                 }
 
@@ -59,9 +64,16 @@ $con = mysqli_connect('localhost','root','','mitm');
         <div class="console_reponse">
             <div class="reponse">
                 <br>
-                <p>sqdqsd</p>
+                <p><?php 
+                    foreach(range(0, $idses-1)as $num){
+                        echo $_SESSION['reponse'[$num]];
+                    }
+                ?></p>
                 <br>
             </div>
         </div>
     </body>
 </html>
+<?php 
+session_destroy()
+?>
