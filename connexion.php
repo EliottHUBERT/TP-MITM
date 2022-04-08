@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,7 +10,12 @@
            session_start();
         ?>
     </head>
+    <script>
+        const newAccount = new BankAccount("Will Alexander", 500);
 
+        newAccount.showBalance(); // imprime "Solde: 500 EUR" à la console
+
+    </script>
     <body>
         <?php
         if(isset($_POST["nomutilisateur"])==False){
@@ -34,7 +40,7 @@
                 $idutilisateur='';
                 $_SESSION["nomutilisateur"]=$nom_utilisateur;
 
-                for($i=0;$i<=10;$i++){
+                for($i=0;$i<=10;$i++){ // generation de l'id utilisateur contenant 10 caractere 
                     $indice=rand(0,36);
                     $laval=$lasuite[$indice];
                     $idutilisateur=strval($idutilisateur).$laval;
@@ -59,12 +65,15 @@
                     if (isset($_POST["nom_binome"])){
                         $le_binome=$_POST["nom_binome"];
                         echo $le_binome;
-                        $requete = "SELECT 'id' FROM `utilisateur` WHERE (`login`='$le_binome');";
+                        $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$le_binome';";
                         $larequete = mysqli_query($connexion,$requete);
                         $resultatrequete=mysqli_fetch_array($larequete);
-                        $lid_du_binome=$resultatrequete['id'];
-                        echo $lid_du_binome;
+                        echo $resultatrequete[0];
+                        $lid_du_binome=$resultatrequete;
+                        print_r($lid_du_binome);
                     }
+
+                    
                 }
 
             }
