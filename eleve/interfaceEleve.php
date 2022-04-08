@@ -3,8 +3,7 @@ session_set_cookie_params(0);
 session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
-ini_set('display_errors', 'off');
-$idses = $_SESSION['id'];
+//ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 ?>
 
@@ -39,12 +38,13 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $mysqli = new mysqli("localhost", "root", "", "mitm");
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
+                    $idrep = $_COOKIE['id'];
                     while ($ligne = $resultat->fetch_assoc()) {
-                        $idses = $_SESSION['id'];
-                        $_SESSION['reponse'[$idses]] = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
-                        $idses = $idses +1;
-                        $_SESSION['id'] = $idses;
+                        $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     }
+                    setcookie('id', $idrep);
                 }
 
 
@@ -54,14 +54,20 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 
                     $requete_presence_formateur = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
                     $presence_formateur = mysqli_query($con, $requete_presence_formateur);
+                    $idrep = $_COOKIE['id'];
                     if(mysqli_num_rows($presence_formateur)) {
-                        echo 'la communication est déjà établie';
+                        $reponse ='<br>la communication est déjà établie';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
                         $result = mysqli_query($con, $requete1);
-                        echo 'connexion etablie';
+                        $reponse ='<br>connexion etablie';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     }
+                    setcookie('id', $idrep);
                 }
 
 
@@ -84,16 +90,16 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
             <div class="reponse">
                 <br>
                 <p><?php 
-                    $idses = $_SESSION['id'];
-                    foreach(range(0, $idses-1)as $num){
-                        echo $_SESSION['reponse'[$num]];
+                    $idrep = $_COOKIE['id'];
+                    foreach(range(0, $idrep-1)as $num){
+                        echo $_COOKIE[$num];
                     }
-                ?></p>
+                ?><br></p>
                 <br>
             </div>
         </div>
     </body>
 </html>
 <?php 
-// session_destroy()
+//session_destroy()
 ?>
