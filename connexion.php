@@ -10,12 +10,7 @@
            session_start();
         ?>
     </head>
-    <script>
-        const newAccount = new BankAccount("Will Alexander", 500);
-
-        newAccount.showBalance(); // imprime "Solde: 500 EUR" à la console
-
-    </script>
+    
     <body>
         <?php
         if(isset($_POST["nomutilisateur"])==False){
@@ -63,14 +58,28 @@
                         ";
 
                     if (isset($_POST["nom_binome"])){
-                        $le_binome=$_POST["nom_binome"];
-                        echo $le_binome;
-                        $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$le_binome';";
-                        $larequete = mysqli_query($connexion,$requete);
-                        $resultatrequete=mysqli_fetch_array($larequete);
-                        echo $resultatrequete[0];
-                        $lid_du_binome=$resultatrequete;
-                        print_r($lid_du_binome);
+                        if($_POST["nom_binome"]==$nom_utilisateur){
+                            echo"erreur votre nom de binom est le meme que votre nom d'utilisateur";
+                        }
+                        else {
+                            $le_binome=$_POST["nom_binome"];
+
+                            $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$le_binome';";
+                            $larequete = mysqli_query($connexion,$requete);
+                            $resultatrequete=mysqli_fetch_array($larequete);
+                            $lid_du_binome=$resultatrequete[0];
+                            echo $lid_du_binome;
+                            
+                            
+                            $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$nom_utilisateur';";
+                            $larequete = mysqli_query($connexion,$requete);
+                            $resultatrequete=mysqli_fetch_array($larequete);
+                            $votreid=$resultatrequete[0];
+                            echo $votreid;
+
+                            $requete = "INSERT INTO `binome` (`ID1`, `ID2`) VALUES ('$votreid', '$lid_du_binome');";
+                            $larequete = mysqli_query($connexion,$requete);
+                        }
                     }
 
                     
