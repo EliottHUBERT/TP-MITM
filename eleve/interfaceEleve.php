@@ -1,9 +1,8 @@
 <?php
 session_set_cookie_params(0);
-session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
-//ini_set('display_errors', 'off');
+ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 ?>
 
@@ -56,14 +55,14 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $presence_formateur = mysqli_query($con, $requete_presence_formateur);
                     $idrep = $_COOKIE['id'];
                     if(mysqli_num_rows($presence_formateur)) {
-                        $reponse ='<br>la communication est déjà établie';
+                        $reponse ='la communication est déjà établie<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
                         $result = mysqli_query($con, $requete1);
-                        $reponse ='<br>connexion etablie';
+                        $reponse ='connexion etablie<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     }
@@ -100,6 +99,3 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
         </div>
     </body>
 </html>
-<?php 
-//session_destroy()
-?>
