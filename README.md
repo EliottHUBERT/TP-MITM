@@ -8,6 +8,29 @@ Projet réaliser par :
 
 Ce projet est un TP de BTS SIO qui a été crée par LANGLOY Alban qui nous à demander d'automatiser celui-ci afin de faciliter sa mise en pratique lors des prochaines années.
 
+Paramétrage:
+    Pour autoriser les connexions local pour d'autre utilisateur depuis un serveur WAMP3 il faut:
+        clic gauche wampmanager -> Apache -> httpd-vhost.conf
+
+        cela va ouvrire un fichier permettant la configuration, il sera censer ressembler à ça:
+
+            #
+            # Virtual Hosts
+            #
+
+            <VirtualHost *:80>
+                ServerName localhost
+                DocumentRoot c:/wamp/www
+                <Directory  "c:/wamp/www/">
+                    Options +Indexes +FollowSymLinks +MultiViews
+                    AllowOverride All
+                    Require local
+                </Directory>
+            </VirtualHost>
+
+        Il suffit alors de remplacer Require local par Require all granted      
+
+
 Ce TP est une introduction à l'attaque du Man In The middle (MITM), et consiste à cela :
 
     Sujet : Mon nom est « personne ».
