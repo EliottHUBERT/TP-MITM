@@ -4,6 +4,7 @@ session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 ini_set('display_errors', 'off');
+$idses = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ ini_set('display_errors', 'off');
         </form>
 
         <?php
-            $idses = 0;
+            
             if (isset($_POST['actionBien'])) {
 
                 // Afficher les ID/Etudiants    
@@ -37,15 +38,20 @@ ini_set('display_errors', 'off');
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
                     while ($ligne = $resultat->fetch_assoc()) {
+                        $idses = $_SESSION['id'];
                         $_SESSION['reponse'[$idses]] = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
                         $idses = $idses +1;
+                        $_SESSION['id'] = $idses;
                     }
                 }
 
 
                 //Etablir la communication avec un ID
                 if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
-                   echo "test";
+                    $idses = $_SESSION['id'];
+                    $_SESSION['reponse'[$idses]] = "test <br>";
+                    $idses = $idses +1;
+                    $_SESSION['id'] = $idses;
                 }
 
 
@@ -68,6 +74,7 @@ ini_set('display_errors', 'off');
             <div class="reponse">
                 <br>
                 <p><?php 
+                    $idses = $_SESSION['id'];
                     foreach(range(0, $idses-1)as $num){
                         echo $_SESSION['reponse'[$num]];
                     }
@@ -78,5 +85,5 @@ ini_set('display_errors', 'off');
     </body>
 </html>
 <?php 
-session_destroy()
+// session_destroy()
 ?>

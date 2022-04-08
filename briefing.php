@@ -1,8 +1,14 @@
+<?php
+session_set_cookie_params(0);
+session_start();
+$idses = 0;
+$_SESSION['id'[$idses]] = $idses;
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <META HTTP-EQUIV="Refresh" CONTENT="; URL=http://localhost/TP-MITM/briefing.php"> 
+        <META HTTP-EQUIV="Refresh" CONTENT="10; URL=http://localhost/TP-MITM/eleve/interfaceEleve.php"> 
         <link href="styles/styles.css" rel="stylesheet" type="text/css">
         <title> Briefing MITM </title>
     </head>
