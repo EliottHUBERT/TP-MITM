@@ -1,6 +1,6 @@
 <?php
 include ('../fonction.php');
-
+$con = mysqli_connect('localhost','root','','mitm');
 ?>
 
 <!DOCTYPE html>
@@ -11,17 +11,50 @@ include ('../fonction.php');
         <title> Interface Eleve </title>
     </head>
     <body>
+    <form method="post">
+            <select id="bouton" name="actionBien">
+                <option value="valeur1">Afficher les ID/Etudiants</option>
+                <option value="valeur2">Etablir la communication avec un ID</option>
+                <option value="valeur3">Identification via login / pass auprès d’un ID</option>
+                <option value="valeur4">Message secret auprès d’un ID</option>
+            </select>
+            <input type="submit" value="Valider">
+        </form>
 
-        <div class = "fieldset">
-            <fieldset>
-                <div class = "bouton">
-                Demander la table de relation des Etudiants/ID : <button onclick="afficherEtudiantId()"> AfficherID </button> <br>
-                Etablissement de la communication avec un ID : <button onclick="test()"> Click </button> <br>
-                Identification via login / pass auprès d’un ID : <button onclick="test()"> Click </button> <br>
-                Message secret auprès d’un ID : <button onclick="test()"> Click </button>
-                </div>
-            </fieldset>
-        </div>
+        <?php
+            if (isset($_POST['actionBien'])) {
+
+                // Afficher les ID/Etudiants    
+                if($_POST['actionBien'] == "valeur1") {
+                    $mysqli = new mysqli("localhost", "root", "", "mitm");
+                    $requete = "SELECT * FROM utilisateur";
+                    $resultat = $mysqli->query($requete);
+                    while ($ligne = $resultat->fetch_assoc()) {
+                        echo $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                    }
+                }
+
+
+                //Etablir la communication avec un ID
+                if($_POST['actionBien'] == "valeur2") {
+
+                }
+
+
+                //Identification via login / pass auprès d’un ID 
+                if($_POST['actionBien'] == "valeur2") {
+
+                }
+
+
+                //Message secret auprès d’un ID
+                if($_POST['actionBien'] == "valeur2") {
+
+                }
+
+
+            }
+        ?>
         
         <div class="console_reponse">
             <div class="reponse">
