@@ -36,8 +36,9 @@ Ce TP est une introduction à l'attaque du Man In The middle (MITM), et consiste
             oEt une action malveillante :   -Demander à modifier un ID
                                             -Bloquer un ID sur une phase 
                                             -Ecouter un ID 
-                                            -Toutes actions sont faites via Teams en privé vers l’enseignant. Celui-ci repondéra si nécessaire.  Toutes les actions sont traitées en FIFO (First in / First out). 
-                                            -Une fois toutes les actions passées, une nouvelle phase débute. 
+                                            
+            -Toutes les actions sont traitées en FIFO (First in / First out). 
+            -Une fois toutes les actions passées, une nouvelle phase débute. 
      
         Phase finale: 
             -Envoyer un message à votre enseignant avec : 
