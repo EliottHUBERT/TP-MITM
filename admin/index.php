@@ -1,10 +1,8 @@
 <?php
-$ipserveur=$_SERVER['REMOTE_ADDR'];
-$ip=$_SERVER['SERVER_ADDR'];
-if ($ip==$ipserveur){
-    header('admin.php');
-}else {
-    header('../connexion.php');
+$ip=$_SERVER['REMOTE_ADDR'];
+$ipserveur=$_SERVER['SERVER_ADDR'];
+if ($ip!=$ipserveur){
+    header('Location:../connexion.php');
 }
 require ('../Fonction/connexion_sql.php')
 ?>
