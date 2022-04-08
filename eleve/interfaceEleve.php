@@ -21,7 +21,7 @@ include ('../fonction.php');
                 Message secret auprès d’un ID : <button onclick="test()"> Click </button>
                 </div>
             </fieldset>
-
+        </div>
         
         <div class="console_reponse">
             <div class="reponse">
