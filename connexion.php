@@ -2,12 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>connexion</title>
         <link rel="stylesheet" href="Styles/styles.css" type="text/css" />
         <?php
            include('Fonction/connexion_sql.php');
            session_set_cookie_params(1);
            session_start();
+           // Dans les COOKIES on a IDUtilisateur et IDBinome
         ?>
     </head>
     
@@ -24,17 +25,19 @@
             </form>";
         }
         GLOBAL $nom_utilisateur;
+        $compteurbinomme=0;
+        GLOBAL $compteurbinomme;
         
         if (isset($_POST["nomutilisateur"])){
             $nom_utilisateur=$_POST["nomutilisateur"];
             if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
-                $_SESSION["nomutilisateur"]='langloy';
+                setcookie('nomutilisateur','langloy');
                 header('location: professeur/professeur.php');
             }
             elseif(isset($nom_utilisateur)){
                 $lasuite=['A','Z','E','R','T','Y','U','I','O','P','Q','S','D','F','G','H','J','K','L','M','W','X','C','V','B','N','1','2','3','4','5','6','7','8','9','!','?'];
                 $idutilisateur='';
-                $_SESSION["nomutilisateur"]=$nom_utilisateur;
+                setcookie('nomutilisateur',$nom_utilisateur);
 
                 for($i=0;$i<=10;$i++){ // generation de l'id utilisateur contenant 10 caractere 
                     $indice=rand(0,36);
@@ -45,55 +48,71 @@
                 $requete = "SELECT `login` FROM `utilisateur` ;";
                 $resultat = $connexion->query($requete);
                 while ($ligne = $resultat->fetch_assoc()) {
-                    echo $ligne['login'];
                     array_push($les_utilisateurs,$ligne['login']);
                 }
                 
-                print_r($les_utilisateurs);
                 
                 
                 if($connexion){
                     if(in_array($nom_utilisateur,$les_utilisateurs)==false){
-                        echo"connexion";
                         $requete = "INSERT INTO `utilisateur` (`id`, `idEleve`, `login`, `message`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
                         $larequete = mysqli_query($connexion,$requete);
-                        echo'insertion réussie</br>';
+                        
                         
                     }
-
-                    echo"
-                        <form method='POST'>
-                            Entrez le nom de votre binome
-                            <input name='nom_binome' class='nom_utilisateur'  placeholder='nom binome' required></input>
-                            </br>
-                            <input type='hidden' name='nomutilisateur' id='nom_utilisateur' value='".$nom_utilisateur."'required>
-                            <input type='submit' value='Valider' class='BoutonValidation' >
-                        </form>
-                        ";
-
-                    if (isset($_POST["nom_binome"])){
+                    if (isset($_POST["nom_binome"])==false){
+                        echo"
+                            <form method='POST'>
+                                Entrez le nom de votre binome
+                                <input name='nom_binome' class='nom_utilisateur'  placeholder='nom binome' required></input>
+                                </br>
+                                <input type='hidden' name='nomutilisateur' id='nom_utilisateur' value='".$nom_utilisateur."'required>
+                                <input type='submit' value='Valider' class='BoutonValidation' >
+                            </form>
+                            ";
+                    }
+                    else { //isset($_POST["nom_binome"])
                         if($_POST["nom_binome"]==$nom_utilisateur){
                             echo"erreur votre nom de binome est le meme que votre nom d'utilisateur";
                         }
                         
-                        else {
+                        elseif($compteurbinomme==0) {
+                            $compteurbinomme+=1;
                             $le_binome=$_POST["nom_binome"];
 
                             $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$le_binome';";
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $lid_du_binome=$resultatrequete[0];
-                            echo $lid_du_binome;
+                            setcookie('IDBinome',$lid_du_binome);
                             ////////////////////////////////////////////////////////////////
                             
                             $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$nom_utilisateur';";
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $votreid=$resultatrequete[0];
-                            echo $votreid;
+                            setcookie('IDUtilisateur',$votreid);
                             ////////////////////////////////////////////////////////////////
 
                             $requete = "INSERT INTO `binome` (`ID1`, `ID2`) VALUES ('$votreid', '$lid_du_binome');";
+                            $larequete = mysqli_query($connexion,$requete);
+                        }
+                        if(isset($_POST["messagesecret"])==False){
+                            echo"
+                            <form method='POST'>
+                                Entrez votre message secret
+                                <input name='messagesecret' class='nom_utilisateur'  placeholder='message secret' required></input>
+                                </br>
+                                <input type='hidden' name='nomutilisateur' id='nom_utilisateur' value='".$nom_utilisateur."'required>
+                                <input type='hidden' name='nombinome' id='nom_utilisateur' value='".$le_binome."'required>
+                                <input type='submit' value='Valider' class='BoutonValidation' >
+                            </form>
+                            ";
+                        }
+                        else{
+                            $messagesecret=$_POST["messagesecret"];
+                            echo'requete';
+                            $requete = "UPDATE `utilisateur` SET `message` = '$messagesecret' WHERE `utilisateur`.`id` = '$votreid';";
                             $larequete = mysqli_query($connexion,$requete);
                         }
                     }
