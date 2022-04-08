@@ -40,12 +40,13 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
                     $idrep = $_COOKIE['id'];
+                    setcookie('id', $idrep);
                     while ($ligne = $resultat->fetch_assoc()) {
                         $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     }
-                    setcookie('id', $idrep);
+                    
                 }
 
 
@@ -56,8 +57,9 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
                     $presence_com = mysqli_query($con, $requete_presence_com);
                     $idrep = $_COOKIE['id'];
+                    setcookie('id', $idrep);
                     if(mysqli_num_rows($presence_com)) {
-                        $reponse = 'la communication est déjà établie avec cet id<br>';
+                        $reponse ='la communication est déjà établie avec cet id<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     } 
@@ -68,7 +70,7 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     }
-                    setcookie('id', $idrep);
+                    
                 }
 
 
