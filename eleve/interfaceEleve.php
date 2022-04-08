@@ -1,9 +1,8 @@
 <?php
 session_set_cookie_params(0);
-session_start();
 include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
-//ini_set('display_errors', 'off');
+ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 ?>
 
@@ -63,7 +62,9 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
                         $result = mysqli_query($con, $requete1);
-                        echo 'communication établie';
+                        $reponse ='communication établie<br>';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     }
                     setcookie('id', $idrep);
                 }
@@ -96,6 +97,3 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
         </div>
     </body>
 </html>
-<?php 
-//session_destroy()
-?>
