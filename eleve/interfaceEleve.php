@@ -57,7 +57,9 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
                     $presence_com = mysqli_query($con, $requete_presence_com);
                     $idrep = $_COOKIE['id'];
                     if(mysqli_num_rows($presence_com)) {
-                        echo 'la communication est déjà établie avec cet id';
+                        $reponse = 'la communication est déjà établie avec cet id<br>';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
