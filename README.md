@@ -12,7 +12,7 @@ Ce TP est une introduction à l'attaque du Man In The middle (MITM), et consiste
 
     Sujet : Mon nom est « personne ».
     
-    Vous allez vous mettre dans la peau d’un hackerͶͷ😏. Votre objectif, communiquer un message secret à votre contact dans le Darkweb. Attention, votre organisation est elle-même ciblé et vous devez également contre attaquer pour arriver à vos fins. Après tout, les données des autres organismes pourront toujours être revendu à big Daddy Langloy ۜ💰
+    Vous allez vous mettre dans la peau d’un hacker😏. Votre objectif, communiquer un message secret à votre contact dans le Darkweb. Attention, votre organisation est elle-même ciblé et vous devez également contre attaquer pour arriver à vos fins. Après tout, les données des autres organismes pourront toujours être revendu à big Daddy Langloy ۜ💰
     
     Objectif du TP: 
         -Obtenir le mot secret de votre binôme : +10 £angloy ۜ💰
@@ -36,8 +36,9 @@ Ce TP est une introduction à l'attaque du Man In The middle (MITM), et consiste
             oEt une action malveillante :   -Demander à modifier un ID
                                             -Bloquer un ID sur une phase 
                                             -Ecouter un ID 
-                                            -Toutes actions sont faites via Teams en privé vers l’enseignant. Celui-ci repondéra si nécessaire.  Toutes les actions sont traitées en FIFO (First in / First out). 
-                                            -Une fois toutes les actions passées, une nouvelle phase débute. 
+                                            
+            -Toutes les actions sont traitées en FIFO (First in / First out). 
+            -Une fois toutes les actions passées, une nouvelle phase débute. 
      
         Phase finale: 
             -Envoyer un message à votre enseignant avec : 
