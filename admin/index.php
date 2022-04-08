@@ -1,7 +1,7 @@
 <?php
 
 include '../fonction.php';
-if (verifip()){
+if (!verifip()){
     header('Location:../connexion.php');
 }
 require ('../Fonction/connexion_sql.php')
@@ -43,7 +43,7 @@ require ('../Fonction/connexion_sql.php')
     <h2>information sur un éléve</h2>
     <form methode='get'>
         <span>Utilisateur</span>
-        <select name="search" class="form-select">
+        <select name="search" class="form-select" id="inputGroupSelect03">
             <?php
             $query="SELECT * FROM utilisateur";
             $result=mysqli_query($connexion,$query);
@@ -56,6 +56,13 @@ require ('../Fonction/connexion_sql.php')
             }
             ?>
         </select>
+        <script>
+            $(document).ready(function(){
+
+            // Initialize select2
+            $("#inputGroupSelect03").select2();
+            });
+        </script>
     </form>
 </body>
 </html>
