@@ -47,7 +47,7 @@
         if (isset($_POST["nomutilisateur"])){
             $nom_utilisateur=$_POST["nomutilisateur"];
             if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
-                // setcookie('nomutilisateur','langloy');
+                setcookie('nomutilisateur','langloy');
                 header('location: professeur/professeur.php');
             }
             elseif(isset($nom_utilisateur)){
