@@ -1,6 +1,6 @@
 <?php
 session_set_cookie_params(0);
-include ('../fonction.php');
+include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
@@ -45,12 +45,13 @@ foreach($_COOKIE as $cookie_name => $cookie_value){
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
                     $idrep = $_COOKIE['id'];
+                    setcookie('id', $idrep);
                     while ($ligne = $resultat->fetch_assoc()) {
                         $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     }
-                    setcookie('id', $idrep);
+                    
                 }
 
 
@@ -61,8 +62,11 @@ foreach($_COOKIE as $cookie_name => $cookie_value){
                     $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
                     $presence_com = mysqli_query($con, $requete_presence_com);
                     $idrep = $_COOKIE['id'];
+                    setcookie('id', $idrep);
                     if(mysqli_num_rows($presence_com)) {
-                        echo 'la communication est déjà établie avec cet id';
+                        $reponse ='la communication est déjà établie avec cet id<br>';
+                        setcookie($idrep, $reponse);
+                        $idrep = $idrep + 1;
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol', '$idEleveCommunicant');";
@@ -71,7 +75,7 @@ foreach($_COOKIE as $cookie_name => $cookie_value){
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                     }
-                    setcookie('id', $idrep);
+                    
                 }
 
 
