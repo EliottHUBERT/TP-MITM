@@ -8,7 +8,6 @@ $mysqli = new mysqli("localhost", "root", "", "mitm");
 //ini_set('display_errors', 'off');
 $IDEleve = "I3U2C9JPLNM";
 
-
 ?>
 
 <!DOCTYPE html>
@@ -16,25 +15,27 @@ $IDEleve = "I3U2C9JPLNM";
     <head>
         <meta charset="UTF-8"> 
         <link href="../Styles/styles.css" rel="stylesheet" type="text/css">
+        <!-- <link href="../Styles/overflow.css" rel="stylesheet" type="text/css"> -->
         <title> Interface Eleve </title>
     </head>
     <body>
-        <form method="post">
-            <select id="bouton" name="actionBien">
-                <option value="valeur0"></option>
-                <option value="valeur1" selected>Afficher les ID/Etudiants</option>
-                <option value="valeur2">Etablir la communication avec un ID</option>
-                <option value="valeur3">Identification via login / pass auprès d’un ID</option>
-                <option value="valeur4">Message secret auprès d’un ID</option>
-            </select>
-            
-            <br>    
-            <br>
-            Entrez l'id si besoin : <input type='text' name='idEleve'>
-            
-            <input type="submit" value="Valider">
-        </form>
-
+        <div id="requete">
+            <form method="post">
+                <select id="bouton" name="actionBien">
+                    <option value="valeur0"></option>
+                    <option value="valeur1" selected>Afficher les ID/Etudiants</option>
+                    <option value="valeur2">Etablir la communication avec un ID</option>
+                    <option value="valeur3">Identification via login / pass auprès d’un ID</option>
+                    <option value="valeur4">Message secret auprès d’un ID</option>
+                </select>
+                
+                <br>    
+                <br>
+                Entrez l'id si besoin : <input type='text' name='idEleve'>
+                
+                <input type="submit" value="Valider">
+            </form>
+        </div>
         <?php
             
             if (isset($_POST['actionBien'])) {
@@ -42,12 +43,12 @@ $IDEleve = "I3U2C9JPLNM";
                 if($_POST['actionBien'] == "valeur1") {
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
-                    // $idrep = $_COOKIE['id'];
-                    // setcookie('id', $idrep);
+                    $idrep = $_COOKIE['id'];
                     while ($ligne = $resultat->fetch_assoc()) {
                         $reponse = $ligne['UTILIdEleve'] . ' ' . $ligne['UTILLogin'] . '<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
+                        setcookie('id', $idrep);
                     }
                     
                 }
@@ -59,12 +60,12 @@ $IDEleve = "I3U2C9JPLNM";
                     $requete_presence_com = "SELECT * FROM `communication` WHERE `UTILIdEleve1` = '$IDEleve' AND `UTILIdEleve2` = '$idEleveCommunicant';";
                     $presence_com = mysqli_query($con, $requete_presence_com);
                     $idrep = $_COOKIE['id'];
-                    setcookie('id', $idrep);
                     if(mysqli_num_rows($presence_com)) {
                         echo 'deja etablie';
                         $reponse ='la communication est déjà établie avec cet id<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
+                        setcookie('id', $idrep);
                     } 
                     else { 
                         echo 'pas etablie';
@@ -83,6 +84,7 @@ $IDEleve = "I3U2C9JPLNM";
                         $reponse ='<br>communication établie<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
+                        setcookie('id', $idrep);
                     }
                 }
                     
