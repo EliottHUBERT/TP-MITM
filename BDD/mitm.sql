@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `action`;
 CREATE TABLE IF NOT EXISTS `action` (
   `ACTIONId` int(11) NOT NULL AUTO_INCREMENT,
-  `ACTIONCommunication` int(11) NOT NULL,
+  `ACTIONCommunication` boolean NOT NULL,
   `UTILId` int(11) NOT NULL,
   `PHASEId` int(11) NOT NULL,
   PRIMARY KEY (`ACTIONId`)
@@ -68,8 +68,8 @@ INSERT INTO `binome` (`UTILId1`, `UTILId2`) VALUES
 DROP TABLE IF EXISTS `communication`;
 CREATE TABLE IF NOT EXISTS `communication` (
   `COMMID` int(11) NOT NULL AUTO_INCREMENT,
-  `UTILIdEleve1` int(11) NOT NULL,
-  `UTILIdEleve2` int(11) NOT NULL,
+  `UTILIdEleve1` varchar(16) NOT NULL,
+  `UTILIdEleve2` varchar(16) NOT NULL,
   `PHASEId` int(11) NOT NULL,
   PRIMARY KEY (`COMMID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `ecoute` (
 DROP TABLE IF EXISTS `phase`;
 CREATE TABLE IF NOT EXISTS `phase` (
   `PHASEId` int(11) NOT NULL AUTO_INCREMENT,
-  `PHASEEtat` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `PHASEEtat` boolean COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`PHASEId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -121,22 +121,28 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMessage`) VALUES
-(73, 'GEUZMMO72NT', 'ZAEFSGRDHTFGHG', ''),
-(10, 'I3U2C9JPLNM', 'qwerty', ''),
-(72, '2AKHQ6GK?OW', 'aqswxdfrtfgv', ''),
-(8, '3VG?DLH8OKO', 'azerty', 'test'),
-(71, 'EF1KAOBSQJQ', 'qawsedrcftvgyvbh', ''),
-(70, 'FGS!SFTFCTU', 'qwdxftyvhbj', ''),
-(69, 'WPFNOSKC?IJ', 'fsdghvb', ''),
-(68, 'LL54TQPDV28', 'azertyuio', ''),
-(67, 'MFD217C8RX1', 'zwexrtcfygvhj ', ''),
-(66, 'QHRWR?IWJWV', 'edtrfgvyubjk,l', ''),
-(65, 'FGD3LQM56S2', 'lautretest', ''),
-(64, 'PIJE4RGIIOJ', 'autre', ''),
-(62, 'T2NFOEWU8VA', 'gaston', ''),
-(63, '9LEWQMJXPRN', 'letest', '');
+(NULL, 'GEUZMMO72NT', 'ZAEFSGRDHTFGHG', ''),
+(NULL, 'I3U2C9JPLNM', 'qwerty', ''),
+(NULL, '2AKHQ6GK?OW', 'aqswxdfrtfgv', ''),
+(NULL, '3VG?DLH8OKO', 'azerty', 'test'),
+(NULL, 'EF1KAOBSQJQ', 'qawsedrcftvgyvbh', ''),
+(NULL, 'FGS!SFTFCTU', 'qwdxftyvhbj', ''),
+(NULL, 'WPFNOSKC?IJ', 'fsdghvb', ''),
+(NULL, 'LL54TQPDV28', 'azertyuio', ''),
+(NULL, 'MFD217C8RX1', 'zwexrtcfygvhj ', ''),
+(NULL, 'QHRWR?IWJWV', 'edtrfgvyubjk,l', ''),
+(NULL, 'FGD3LQM56S2', 'lautretest', ''),
+(NULL, 'PIJE4RGIIOJ', 'autre', ''),
+(NULL, 'T2NFOEWU8VA', 'gaston', ''),
+(NULL, '9LEWQMJXPRN', 'letest', '');
 COMMIT;
+
+
+INSERT INTO `phase` (`PHASEId`, `PHASEEtat`) VALUES ('0', '1');
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
