@@ -4,6 +4,11 @@ include ('../fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
+
+echo"cherche cookie";
+foreach($_COOKIE as $cookie_name => $cookie_value){
+    echo 'le cookie'.$_COOKIE[$cookie_name];
+}
 ?>
 
 <!DOCTYPE html>
