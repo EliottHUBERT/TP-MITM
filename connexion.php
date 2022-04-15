@@ -3,9 +3,9 @@
     session_set_cookie_params(0);
     session_start();
     while (isset($nom_utilisateur)==true && isset($IDBinome)==true && isset($IDUtilisateur)==true){
-        setcookie('IDBinome',$IDBinome);
-        setcookie('IDUtilisateur',$IDUtilisateur);
-        setcookie('nomutilisateur',$nom_utilisateur);
+        // setcookie('IDBinome',$IDBinome);
+        // setcookie('IDUtilisateur',$IDUtilisateur);
+        // setcookie('nomutilisateur',$nom_utilisateur);
     }
     
 ?>
@@ -53,7 +53,7 @@
             elseif(isset($nom_utilisateur)){
                 $lasuite=['A','Z','E','R','T','Y','U','I','O','P','Q','S','D','F','G','H','J','K','L','M','W','X','C','V','B','N','1','2','3','4','5','6','7','8','9','!','?'];
                 $idutilisateur='';
-                // setcookie('nomutilisateur',$nom_utilisateur);
+                setcookie('nomutilisateur',$nom_utilisateur);
 
                 for($i=0;$i<=10;$i++){ // generation de l'id utilisateur contenant 10 caractere 
                     $indice=rand(0,36);
@@ -100,14 +100,14 @@
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $lid_du_binome=$resultatrequete[0];
-                            // setcookie('IDBinome',$lid_du_binome);
+                            setcookie('IDBinome',$lid_du_binome);
                             ////////////////////////////////////////////////////////////////
                             
                             $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$nom_utilisateur';";
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $votreid=$resultatrequete[0];
-                            // setcookie('IDUtilisateur',$votreid);
+                            setcookie('IDUtilisateur',$votreid);
                             ////////////////////////////////////////////////////////////////
 
                             $requete = "INSERT INTO `binome` (`ID1`, `ID2`) VALUES ('$votreid', '$lid_du_binome');";
