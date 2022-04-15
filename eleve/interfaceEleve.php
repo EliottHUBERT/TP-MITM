@@ -1,14 +1,13 @@
 <?php
+$idrep = 0;
+setcookie('id',$idrep);
 session_set_cookie_params(0);
 include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 //ini_set('display_errors', 'off');
 $IDEleve = "I3U2C9JPLNM";
 
-echo"cherche cookie";
-foreach($_COOKIE as $cookie_name => $cookie_value){
-    echo 'le cookie'.$_COOKIE[$cookie_name];
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -97,8 +96,13 @@ foreach($_COOKIE as $cookie_name => $cookie_value){
                 <br>
                 <p><?php 
                     $idrep = $_COOKIE['id'];
-                    foreach(range(0, $idrep-1)as $num){
+                    foreach(range(0, 100)as $num){
+                        if (isset($_COOKIE[$num])){
                         echo $_COOKIE[$num];
+                        }
+                        else{
+                            return;
+                        }
                     }
                 ?><br></p>
                 <br>

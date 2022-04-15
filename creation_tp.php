@@ -1,23 +1,29 @@
 
+
+    
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>creation-TP</title>
+        <title>connexion</title>
         <link rel="stylesheet" href="Styles/styles.css" type="text/css" />
-        <?php
-           session_set_cookie_params(1);
-           session_start();
-           include('Fonction/connexion_sql.php');
-        ?>
-    </head>
+        
+    <button href='javascript:void(0)' onclick='clickMe()'>Supression cookie</button>
+    <script>
+    function clickMe() {
+        var result ="<?php php_func()?>"
+        document.write(result);
+    }
+    </script>
+    <?php
+        include('Fonction/connexion_sql.php');
+        session_set_cookie_params(0);
+        session_start();
+    ?>
 
     <body>  
             <?php
                 
-                $messagesecret='test';
-                $votreid=8;
-                $requete = "UPDATE `utilisateur` SET `message` = '$messagesecret' WHERE `utilisateur`.`id` = '$votreid';";
-                $larequete = mysqli_query($connexion,$requete);
             ?>
     </div>
 

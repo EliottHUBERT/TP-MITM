@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 08 avr. 2022 à 07:30
+-- Généré le :  ven. 15 avr. 2022 à 07:30
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -25,34 +25,80 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `action`
+--
+
+DROP TABLE IF EXISTS `action`;
+CREATE TABLE IF NOT EXISTS `action` (
+  `ACTIONId` int(11) NOT NULL AUTO_INCREMENT,
+  `ACTIONCommunication` int(11) NOT NULL,
+  `UTILId` int(11) NOT NULL,
+  `PHASEId` int(11) NOT NULL,
+  PRIMARY KEY (`ACTIONId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `binome`
 --
 
 DROP TABLE IF EXISTS `binome`;
 CREATE TABLE IF NOT EXISTS `binome` (
-  `ID1` int(11) NOT NULL,
-  `ID2` int(11) NOT NULL,
-  UNIQUE KEY `login1` (`ID1`),
-  UNIQUE KEY `login2` (`ID2`)
+  `UTILId1` int(11) NOT NULL,
+  `UTILId2` int(11) NOT NULL,
+  UNIQUE KEY `login1` (`UTILId1`),
+  UNIQUE KEY `login2` (`UTILId2`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `binome`
 --
 
-INSERT INTO `binome` (`ID1`, `ID2`) VALUES
-(36, 8);
+INSERT INTO `binome` (`UTILId1`, `UTILId2`) VALUES
+(62, 8),
+(63, 62);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `table_utile`
+-- Structure de la table `communication`
 --
 
-DROP TABLE IF EXISTS `table_utile`;
-CREATE TABLE IF NOT EXISTS `table_utile` (
-  `Nom_utilisateur` text COLLATE utf8_unicode_ci NOT NULL,
-  `IDUtil` int(11) NOT NULL
+DROP TABLE IF EXISTS `communication`;
+CREATE TABLE IF NOT EXISTS `communication` (
+  `COMMID` int(11) NOT NULL AUTO_INCREMENT,
+  `UTILIdEleve1` int(11) NOT NULL,
+  `UTILIdEleve2` int(11) NOT NULL,
+  `PHASEId` int(11) NOT NULL,
+  PRIMARY KEY (`COMMID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ecoute`
+--
+
+DROP TABLE IF EXISTS `ecoute`;
+CREATE TABLE IF NOT EXISTS `ecoute` (
+  `UTILId1` int(11) NOT NULL,
+  `UTILId2` int(11) NOT NULL,
+  `PHASEId` int(11) NOT NULL,
+  PRIMARY KEY (`UTILId1`,`UTILId2`,`PHASEId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `phase`
+--
+
+DROP TABLE IF EXISTS `phase`;
+CREATE TABLE IF NOT EXISTS `phase` (
+  `PHASEId` int(11) NOT NULL AUTO_INCREMENT,
+  `PHASEEtat` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`PHASEId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -63,31 +109,33 @@ CREATE TABLE IF NOT EXISTS `table_utile` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idEleve` varchar(16) NOT NULL,
-  `login` varchar(20) NOT NULL,
-  `message` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+  `UTILId` int(11) NOT NULL AUTO_INCREMENT,
+  `UTILIdEleve` varchar(16) NOT NULL,
+  `UTILLogin` varchar(20) NOT NULL,
+  `UTILMessage` varchar(255) NOT NULL,
+  PRIMARY KEY (`UTILId`)
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `idEleve`, `login`, `message`) VALUES
+INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMessage`) VALUES
+(73, 'GEUZMMO72NT', 'ZAEFSGRDHTFGHG', ''),
 (10, 'I3U2C9JPLNM', 'qwerty', ''),
-(8, '3VG?DLH8OKO', 'azerty', ''),
-(36, 'P96GEVSKEP7', '', ''),
-(35, 'TXVTHPU!O79', 'gastonLeTocard', '');
+(72, '2AKHQ6GK?OW', 'aqswxdfrtfgv', ''),
+(8, '3VG?DLH8OKO', 'azerty', 'test'),
+(71, 'EF1KAOBSQJQ', 'qawsedrcftvgyvbh', ''),
+(70, 'FGS!SFTFCTU', 'qwdxftyvhbj', ''),
+(69, 'WPFNOSKC?IJ', 'fsdghvb', ''),
+(68, 'LL54TQPDV28', 'azertyuio', ''),
+(67, 'MFD217C8RX1', 'zwexrtcfygvhj ', ''),
+(66, 'QHRWR?IWJWV', 'edtrfgvyubjk,l', ''),
+(65, 'FGD3LQM56S2', 'lautretest', ''),
+(64, 'PIJE4RGIIOJ', 'autre', ''),
+(62, 'T2NFOEWU8VA', 'gaston', ''),
+(63, '9LEWQMJXPRN', 'letest', '');
 COMMIT;
-
-DROP TABLE IF EXISTS `communication`;
-CREATE TABLE IF NOT EXISTS `communication` (
-  `idCommunication` int AUTO_INCREMENT,
-  `idEleve1` varchar(16) NOT NULL,
-  `idEleve2` varchar(16) NOT NULL,
-  PRIMARY KEY (`idCommunication`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
