@@ -1,6 +1,6 @@
 <?php
 
-include '../fonction.php';
+include '../Fonction/fonction.php';
 if (!verifip()){
     header('Location:../connexion.php');
 }
@@ -40,7 +40,7 @@ require ('../Fonction/connexion_sql.php')
         <h2>Remise à zéro :</h2>
         <input type="submit" class="button" name="del" value="del" />
     </form>
-    <h2>information sur un éléve</h2>
+    <h2>Information sur un éléve</h2>
     <form methode='get'>
         <span>Utilisateur</span>
         <select name="search" class="form-select" id="inputGroupSelect03">
@@ -58,9 +58,8 @@ require ('../Fonction/connexion_sql.php')
         </select>
         <script>
             $(document).ready(function(){
-
             // Initialize select2
-            $("#inputGroupSelect03").select2();
+            $("#inputGroupSelect03").select2({});
             });
         </script>
     </form>
