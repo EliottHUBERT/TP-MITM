@@ -1,7 +1,7 @@
 *{
     font-size: 1.05em;
     font-family: consolas;
-    background-color:rgb(80, 77, 77)
+    background-color:rgb(80, 77, 77);
 }
 .briefing{
     margin: 0 auto;
@@ -10,7 +10,24 @@
     background-color:rgb(21, 20, 20);
 }
 
+.briefing .Texte form{
+    background-color:rgb(21, 20, 20);
+}
 
+.briefing .Texte form p{
+    width: 70%;
+    text-align: center;
+    background-color: rgb(21, 20, 20);
+}
+
+.briefing .Texte form p input{
+    color: rgb(14, 204, 14);
+    border-radius: 5px;
+    border-style: none;
+    background-color: rgb(57, 55, 55);
+    font-size: 1.2em;
+    
+}
 
 .briefing .Texte{
     background-color:rgb(21, 20, 20);
@@ -66,40 +83,13 @@
     position:relative;
 }
 
-.console_requete{
-    height: 250px;
-    overflow: auto;
-    margin: 0 auto;
-    width: 72%;
-    background-color:rgb(21, 20, 20);
-    margin-top: 3%;
-    margin-bottom: 5%;
-}
-
-.console_requete .requete{
-    background-color:rgb(21, 20, 20);
-    color: rgb(14, 204, 14);
-    width: 70%;
-    margin: -5%;
-    margin-top: 2%;
-    margin-bottom: 5%;
-}
-
-.console_requete .requete p{
-    background-color:rgb(21, 20, 20);
-    color: rgb(14, 204, 14);
-    width: 70%;
-    margin: 0 auto;
-}
-
-
 .console_reponse{
-    height: 250px;
+    height: 400px;
     overflow: auto;
     margin: 0 auto;
     width: 72%;
     background-color:rgb(21, 20, 20);
-    margin-top: 25%;
+    margin-top: 15%;
 }
 
 .console_reponse .reponse{
@@ -124,5 +114,5 @@
     left: 5%;
 }
 
-.bouton {
-}
+
+
