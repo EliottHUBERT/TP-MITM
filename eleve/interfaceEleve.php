@@ -7,7 +7,6 @@ $con = mysqli_connect('localhost','root','','mitm');
 //ini_set('display_errors', 'off');
 $IDEleve = "I3U2C9JPLNM";
 
-
 ?>
 
 <!DOCTYPE html>
