@@ -60,6 +60,7 @@
                     $laval=$lasuite[$indice];
                     $idutilisateur=strval($idutilisateur).$laval;
                 }
+                
                 $les_utilisateurs=[];
                 $requete = "SELECT `login` FROM `utilisateur` ;";
                 $resultat = $connexion->query($requete);
