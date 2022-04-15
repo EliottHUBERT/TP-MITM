@@ -78,7 +78,7 @@
                         $messagesecret=$_POST["messagesecret"];
                         $requete = "UPDATE `utilisateur` SET `UTILMessage` = '$messagesecret' WHERE `utilisateur`.`UTILId` = '$votreid';";
                         $larequete = mysqli_query($connexion,$requete);
-                        // header("Location:eleve/interfaceEleve.php");
+                        header("Location:eleve/interfaceEleve.php");
                     }
                 }
                 
