@@ -45,12 +45,12 @@ $IDEleve = "I3U2C9JPLNM";
                     $mysqli = new mysqli("localhost", "root", "", "mitm");
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
-                    // $idrep = $_COOKIE['id'];
-                    // setcookie('id', $idrep);
+                    $idrep = $_COOKIE['id'];
                     while ($ligne = $resultat->fetch_assoc()) {
                         $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
+                        setcookie('id', $idrep);
                     }
                     
                 }
@@ -63,11 +63,11 @@ $IDEleve = "I3U2C9JPLNM";
                     $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$IDEleve' AND `idEleve2` = '$idEleveCommunicant';";
                     $presence_com = mysqli_query($con, $requete_presence_com);
                     $idrep = $_COOKIE['id'];
-                    setcookie('id', $idrep);
                     if(mysqli_num_rows($presence_com)) {
                         $reponse ='la communication est déjà établie avec cet id<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
+                        setcookie('id', $idrep);
                     } 
                     else { 
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$IDEleve', '$idEleveCommunicant');";
@@ -75,6 +75,7 @@ $IDEleve = "I3U2C9JPLNM";
                         $reponse ='communication établie<br>';
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
+                        setcookie('id', $idrep);
                     }
                     
                 }
