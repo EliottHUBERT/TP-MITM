@@ -1,6 +1,6 @@
 <?php
 session_set_cookie_params(0);
-include ('../fonction.php');
+include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
