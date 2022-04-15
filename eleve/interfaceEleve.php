@@ -2,7 +2,7 @@
 session_set_cookie_params(0);
 include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
-ini_set('display_errors', 'off');
+//ini_set('display_errors', 'off');
 $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 ?>
 
@@ -51,7 +51,7 @@ $variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol = "I3U2C9JPLNM";
 
 
                 //Etablir la communication avec un ID
-                if($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
+                elseif($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
                     $idEleveCommunicant = $_POST["idEleve"];
 
                     $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$variableLocalIdEleveConnectéMdrLaVaribaleEstTropLongueLol' AND `idEleve2` = '$idEleveCommunicant';";
