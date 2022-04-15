@@ -8,12 +8,12 @@ require ('../Fonction/connexion_sql.php')
 
 
 ?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Page admin</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -25,6 +25,10 @@ require ('../Fonction/connexion_sql.php')
 
     <!-- Select2 JS --> 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $.getScript("./main.js");
+    });</script>
 </head>
 <body>
     <h1>Page admin </h1>
@@ -49,19 +53,46 @@ require ('../Fonction/connexion_sql.php')
             $result=mysqli_query($connexion,$query);
             if($result){
                 while($row=mysqli_fetch_assoc($result)){
-                    $name=$row['login'];
-                    $id=$row['id'];
+                    $name=$row['UTILLogin'];
+                    $id=$row['UTILId'];
                     echo "<option value='".$id."'>".$name."</option>";
                 }
             }
             ?>
         </select>
-        <script>
-            $(document).ready(function(){
-            // Initialize select2
-            $("#inputGroupSelect03").select2({});
-            });
-        </script>
+        <input type="submit" class="button" name="info" value="info"/> 
     </form>
+    <div class="souspage">
+        <div class="box">
+            <?php
+            if(isset($_GET['info'])){
+                $id=$_GET['search'];
+                $query="SELECT UTILLogin as nom FROM utilisateur
+                        WHERE UTILId=$id OR UTILId=(SELECT UTILId2 FROM binome WHERE UTILId1 = $id)";
+                $result=mysqli_query($connexion,$query);
+                if (mysqli_num_rows($result)!=1){
+                    $compte=0;
+                    while($row=mysqli_fetch_assoc($result)){
+                        $name=$row['nom'];
+                        $compte+=1;
+                        if ($compte==1){
+                            echo "<p>Nom : ".$name."</p>";
+                        }elseif ($compte==2) {
+                            echo "<p>Binome avec : ".$name."</p>";
+                        }
+                    }
+                }else{
+                echo "Pas d'information disponible";
+                }
+            }
+            ?>
+            
+            <table>
+                <tr>
+                    
+
+            </table>
+        </div>
+    </div>
 </body>
 </html>
