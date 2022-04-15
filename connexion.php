@@ -102,7 +102,6 @@
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $lid_du_binome=$resultatrequete[0];
                             setcookie('IDBinome',$lid_du_binome);
-                            ////////////////////////////////////////////////////////////////
                             
                             $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$nom_utilisateur';";
                             $larequete = mysqli_query($connexion,$requete);
