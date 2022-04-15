@@ -1,15 +1,31 @@
+<?php
+    include('Fonction/connexion_sql.php');
+    session_set_cookie_params(0);
+    session_start();
+    while (isset($nom_utilisateur)==true && isset($IDBinome)==true && isset($IDUtilisateur)==true){
+        setcookie('IDBinome',$IDBinome);
+        setcookie('IDUtilisateur',$IDUtilisateur);
+        setcookie('nomutilisateur',$nom_utilisateur);
+    }
+    
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>connexion</title>
         <link rel="stylesheet" href="Styles/styles.css" type="text/css" />
-        <?php
-           include('Fonction/connexion_sql.php');
-           session_set_cookie_params(1);
-           session_start();
-           // Dans les COOKIES on a IDUtilisateur et IDBinome
-        ?>
+        
+    <button href='javascript:void(0)' onclick='clickMe()'>Supression cookie</button>
+    <script>
+    function clickMe() {
+        var result ="<?php php_func()?>"
+        document.write(result);
+    }
+    </script>
+    
+
+
     </head>
     
     <body>
@@ -31,13 +47,13 @@
         if (isset($_POST["nomutilisateur"])){
             $nom_utilisateur=$_POST["nomutilisateur"];
             if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
-                setcookie('nomutilisateur','langloy');
+                // setcookie('nomutilisateur','langloy');
                 header('location: professeur/professeur.php');
             }
             elseif(isset($nom_utilisateur)){
                 $lasuite=['A','Z','E','R','T','Y','U','I','O','P','Q','S','D','F','G','H','J','K','L','M','W','X','C','V','B','N','1','2','3','4','5','6','7','8','9','!','?'];
                 $idutilisateur='';
-                setcookie('nomutilisateur',$nom_utilisateur);
+                // setcookie('nomutilisateur',$nom_utilisateur);
 
                 for($i=0;$i<=10;$i++){ // generation de l'id utilisateur contenant 10 caractere 
                     $indice=rand(0,36);
@@ -84,20 +100,20 @@
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $lid_du_binome=$resultatrequete[0];
-                            setcookie('IDBinome',$lid_du_binome);
+                            // setcookie('IDBinome',$lid_du_binome);
                             ////////////////////////////////////////////////////////////////
                             
                             $requete = "SELECT `id` FROM `utilisateur` WHERE `login`='$nom_utilisateur';";
                             $larequete = mysqli_query($connexion,$requete);
                             $resultatrequete=mysqli_fetch_array($larequete);
                             $votreid=$resultatrequete[0];
-                            setcookie('IDUtilisateur',$votreid);
+                            // setcookie('IDUtilisateur',$votreid);
                             ////////////////////////////////////////////////////////////////
 
                             $requete = "INSERT INTO `binome` (`ID1`, `ID2`) VALUES ('$votreid', '$lid_du_binome');";
                             $larequete = mysqli_query($connexion,$requete);
                         }
-                        if(isset($_POST["messagesecret"])==False){
+                        if(isset($_POST["messagesecret"])==false){
                             echo"
                             <form method='POST'>
                                 Entrez votre message secret
@@ -114,6 +130,7 @@
                             echo'requete';
                             $requete = "UPDATE `utilisateur` SET `message` = '$messagesecret' WHERE `utilisateur`.`id` = '$votreid';";
                             $larequete = mysqli_query($connexion,$requete);
+                            header("Location:eleve/interfaceEleve.php");
                         }
                     }
 
@@ -125,4 +142,19 @@
             ?>
         </form>
     </body>
+    <?php
+    function php_func(){
+        echo"supression";
+        foreach($_COOKIE as $cookie_name => $cookie_value){
+            
+            // Commence par supprimer la valeur du cookie
+            unset($_COOKIE[$cookie_name]);
+            
+            // Puis désactive le cookie en lui fixant 
+            // une date d'expiration dans le passé
+            setcookie($cookie_name, '', time() - 4200, '/');
+            echo 'le cookie'.$_COOKIE[$cookie_name];
+        }
+    }
+    ?>
 </html>
