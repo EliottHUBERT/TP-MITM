@@ -17,8 +17,13 @@ $IDEleve = "I3U2C9JPLNM";
         <link href="../Styles/styles.css" rel="stylesheet" type="text/css">
         <!-- <link href="../Styles/overflow.css" rel="stylesheet" type="text/css"> -->
         <title> Interface Eleve </title>
+        <script type="text/javascript">
+        function scrolldiv() {//permet de scroll en bas de la console de réponse
+            document.getElementById('scroll').scrollTop = 99999999999999;
+        }
+</script>
     </head>
-    <body>
+    <body onload="scrolldiv()">
         <div id="requete">
             <form method="post">
                 <select id="bouton" name="actionBien">
@@ -94,7 +99,7 @@ $IDEleve = "I3U2C9JPLNM";
             }
         ?>
         
-        <div class="console_reponse">
+        <div class="console_reponse" id="scroll">
             <div class="reponse">
                 <br>
                 <p><?php 
@@ -112,4 +117,5 @@ $IDEleve = "I3U2C9JPLNM";
             </div>
         </div>
     </body>
+    
 </html>
