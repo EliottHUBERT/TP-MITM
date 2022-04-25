@@ -32,18 +32,25 @@ require ('../Fonction/connexion_sql.php')
 </head>
 <body>
     <h1>Page admin </h1>
-    <?php
-    if(isset($_POST['del'])){
-        $query="DELETE FROM binome;";
-        $result = mysqli_query($connexion, $query);
-        $query="DELETE FROM utilisateur";
-        $result = mysqli_query($connexion, $query);
-    }
-    ?>
-    <form method="post">
+    <form method="post" action="./server.php">
         <h2>Remise à zéro :</h2>
         <input type="submit" class="button" name="del" value="del" />
+        <h2>Phase suivante:</h2>
+        <input type="submit" class="button" name="next" value="next" />
     </form>
+    <?php
+    $query="SELECT PHASEId FROM phase WHERE PHASEEtat='en cours'";
+    $result=mysqli_query($connexion,$query);
+    if($result){
+        $row=mysqli_fetch_assoc($result);
+        if (!isset($row)){
+            header("Refresh:0");
+        }
+        $numPhase=$row['PHASEId'];
+        echo "<p>phase en cours : ".$numPhase;
+    }else{
+    }
+    ?>
     <h2>Information sur un éléve</h2>
     <form methode='get'>
         <span>Utilisateur</span>
@@ -88,7 +95,7 @@ require ('../Fonction/connexion_sql.php')
             ?>
             
             <table>
-                <tr>
+                
                     
 
             </table>
