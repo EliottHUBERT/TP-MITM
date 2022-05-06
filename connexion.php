@@ -102,17 +102,18 @@
 
             function formulaire_2($nom_utilisateur){
                 echo"
-                <form method='POST'>
-                    
-                    <input type='hidden' name='nomutilisateur' id='nom_utilisateur' value='".$nom_utilisateur."'required>
-                    Entrez le nom de votre binome
-                    <input name='nom_binome' class='nom_utilisateur'  placeholder='nom binome' required></input>
-                    </br>
-                    Entrez votre message secret
-                    <input name='messagesecret' class='nom_utilisateur'  placeholder='message secret' required></input>
-                    </br>
-                    <input type='submit' value='Valider' class='BoutonValidation' >
-                </form>";
+                    <form method='POST'>
+                        
+                        <input type='hidden' name='nomutilisateur' id='nom_utilisateur' value='".$nom_utilisateur."'required>
+                        Entrez le nom de votre binome
+                        <input name='nom_binome' class='nom_utilisateur'  placeholder='nom binome' required></input>
+                        </br>
+                        Entrez votre message secret
+                        <input name='messagesecret' class='message_secret'  placeholder='message secret' required></input>
+                        </br>
+                        <input type='submit' value='Valider' class='BoutonValidation' >
+                    </form>
+                ";
             }
 
             function generationID($nom_utilisateur,$connexion){
