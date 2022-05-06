@@ -27,19 +27,35 @@ if (isset($_COOKIE['IDUtilisateur'])) {
 </script> -->
     </head>
     <a href='../briefing.php' target='_blank'>Briefing</a>
+    
     <body onload="scrolldiv()">
         <div id="requete">
             <form method="post">
-                <select id="bouton" name="actionBien">
-                    <option value="valeur0"></option>
-                    <option value="valeur1" selected>Afficher les ID/Etudiants</option>
-                    <option value="valeur2">Etablir la communication avec un ID</option>
-                    <option value="valeur3">Identification via login / pass auprès d’un ID</option>
-                    <option value="valeur4">Message secret auprès d’un ID</option>
-                </select>
-                
+                <label>
+                    <select id="bouton" class="actionBien" name="actionBien">
+                        <option value="">Veuillez selectionner une action...</option>
+                        <option value="valeur1">Afficher les ID/Etudiants</option>
+                        <option value="valeur2">Etablir la communication avec un ID</option>
+                        <option value="valeur3">Identification via login / pass auprès d’un ID</option>
+                        <option value="valeur4">Message secret auprès d’un ID</option>
+                    </select>
+                </label>
                 <br>    
                 <br>
+                <div class="result"></div>
+                <script>
+                    const selectElement = document.querySelector('.actionBien');
+
+                    if (selectElement == "valeur1") {
+                        alert('test');
+                    }
+                    selectElement.addEventListener('change', (event) => {
+                    const result = document.querySelector('.result');
+                    result.textContent = `You like ${event.target.value}`;
+                    });
+                </script>
+
+                
                 Entrez l'id si besoin : <input type='text' name='idEleve'>
                 Entrez un message si besoin : <input type='text' name='message'>
                 
@@ -55,7 +71,9 @@ if (isset($_COOKIE['IDUtilisateur'])) {
                     $mysqli = new mysqli("localhost", "root", "", "mitm");
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
-                    $idrep = $_COOKIE['id'];
+                    if (isset($_COOKIE['id'])){
+                        $idrep = $_COOKIE['id'];
+                    }
                     while ($ligne = $resultat->fetch_assoc()) {
                         $reponse = $ligne['UTILIdEleve'] . ' ' . $ligne['UTILLogin'] . '<br>';
                         setcookie($idrep, $reponse, time()+3600*24);

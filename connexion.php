@@ -10,12 +10,12 @@
         ?>
     </head>
     <body> 
-        <button href='javascript:void(0)' onclick='clickMe()'>Supression cookie</button>
+        
         <a href='briefing.php' target='_blank'>Briefing</a>
-
+        
         <?php
             
-            
+
             if(isset($_POST["nomutilisateur"])==False){
                 formulaire_1();
             }
