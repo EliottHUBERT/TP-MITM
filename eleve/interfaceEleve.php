@@ -18,7 +18,10 @@ $IDEleve = "I3U2C9JPLNM";
         <!-- <link href="../Styles/overflow.css" rel="stylesheet" type="text/css"> -->
         <title> Interface Eleve </title>
     </head>
+    
     <body>
+        <button class='sup_cookie' onclick="window.location.href='../page_fin.php'" >Fin du TP</button>
+
         <div id="requete">
             <form method="post">
                 <select id="bouton" name="actionBien">
