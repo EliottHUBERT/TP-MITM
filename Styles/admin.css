@@ -1,0 +1,13 @@
+:root{
+    --very-dark-blue:hsl(216, 12%, 8%);
+    --dark-blue: hsl(213, 19%, 18%);
+    --shade-blue: hsl(216, 12%, 54%, 0.2);
+    --green:hsl(120, 79%, 34%);
+    --dark-green:hsl(120, 79%, 21%);
+}
+
+body{
+    padding:0px;
+    margin: 0px;
+    
+}
