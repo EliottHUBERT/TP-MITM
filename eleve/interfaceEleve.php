@@ -6,7 +6,7 @@ include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 $mysqli = new mysqli("localhost", "root", "", "mitm");
 //ini_set('display_errors', 'off');
-$IDEleve = "I3U2C9JPLNM";
+$IDEleve = $_COOKIE['IDUtilisateur'];
 
 ?>
 
@@ -85,7 +85,7 @@ $IDEleve = "I3U2C9JPLNM";
                         setcookie($idrep, $reponse);
                         $idrep = $idrep + 1;
                         setcookie('id', $idrep);
-                    }
+                    } 
                 }
                     
 
@@ -96,7 +96,7 @@ $IDEleve = "I3U2C9JPLNM";
                 }
 
 
-                //Message secret auprès d’un ID
+                //Message secret auprès d’un ID : Envoie  du message a notre binome
                 elseif($_POST['actionBien'] == "valeur4") {
 
                 }
