@@ -1,4 +1,5 @@
 <?php
+//header("Refresh:1");
 $idrep = 0;
 setcookie('id',$idrep);
 session_set_cookie_params(0);
@@ -32,6 +33,7 @@ $IDEleve = $_COOKIE['IDUtilisateur'];
                 <br>    
                 <br>
                 Entrez l'id si besoin : <input type='text' name='idEleve'>
+                Entrez un message si besoin : <input type='text' name='message'>
                 
                 <input type="submit" value="Valider">
             </form>
@@ -97,7 +99,12 @@ $IDEleve = $_COOKIE['IDUtilisateur'];
 
 
                 //Message secret auprès d’un ID : Envoie  du message a notre binome
-                elseif($_POST['actionBien'] == "valeur4") {
+                elseif($_POST['actionBien'] == "valeur4" && $_POST["message"] !== "" && $_POST["idEleve"] !== "") {
+                    $MESId = $_COOKIE['IDUtilisateur'];
+                    $idEleve = $_POST["idEleve"];
+                    $message = $_POST["message"];
+                    $requete = "INSERT INTO `message` (`MESId`, `MESEnvoyeur`, `MESDestinataire`, `MESContenu`) VALUES (NULL, '$MESId', '$idEleve', '$message');";
+                    $lexecution = mysqli_query($mysqli, $requete);
 
                 }
             }
@@ -107,7 +114,9 @@ $IDEleve = $_COOKIE['IDUtilisateur'];
             <div class="reponse">
                 <br>
                 <p><?php 
+                if (isset($_COOKIE['id'])) {
                     $idrep = $_COOKIE['id'];
+                }
                     foreach(range(0, 100)as $num){
                         if (isset($_COOKIE[$num])){
                         echo $_COOKIE[$num];
