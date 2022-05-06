@@ -40,4 +40,15 @@ function block_id ($idtoblock, $tour_unblock, $connexion){//Bloque un ID sur un 
 }
 
 //block_id(5555555555, 5, $connexion);
+
+
+function ecoute_id ($idquiecoute, $idtoecoute, $tour_unblock, $connexion){//Bloque un ID sur un tour
+
+  $sql= "INSERT INTO 'ecoute' ('UTILId1', 'UTILId2', 'PHASEId') VALUES ('$idquiecoute', '$idtoecoute', '$tour_unblock')";
+  if (mysqli_query($connexion, $sql)) {
+      echo "Record updated successfully";
+    } else {
+      echo "Error updating record: " . mysqli_error($connexion);
+    }
+}
 ?>
