@@ -111,7 +111,7 @@
 }
 
 .console_reponse{
-    height: 400px;
+    height: 350px;
     overflow: auto;
     margin: 0 auto;
     width: 72%;
@@ -139,6 +139,15 @@
     position: absolute;
     top: 4%;
     left: 5%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    border-color: black;
+    border-style:solid;
+    border-width: 2px;
+    border-spacing: 10px
 }
 
 

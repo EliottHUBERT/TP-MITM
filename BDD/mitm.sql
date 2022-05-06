@@ -112,29 +112,29 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `UTILId` int(11) NOT NULL AUTO_INCREMENT,
   `UTILIdEleve` varchar(16) NOT NULL,
   `UTILLogin` varchar(20) NOT NULL,
-  `UTILMessage` varchar(255) NOT NULL,
+  `UTILMotDePasse` varchar(255) NOT NULL,
   PRIMARY KEY (`UTILId`)
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `MESId` int(11) NOT NULL AUTO_INCREMENT,
+  `MESEnvoyeur` varchar(32) NOT NULL,
+  `MESDestinataire` varchar(32) NOT NULL,
+  `MESContenu` varchar(255) NOT NULL,
+  PRIMARY KEY (`MESId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMessage`) VALUES
-(NULL, 'GEUZMMO72NT', 'ZAEFSGRDHTFGHG', ''),
-(NULL, 'I3U2C9JPLNM', 'qwerty', ''),
-(NULL, '2AKHQ6GK?OW', 'aqswxdfrtfgv', ''),
-(NULL, '3VG?DLH8OKO', 'azerty', 'test'),
-(NULL, 'EF1KAOBSQJQ', 'qawsedrcftvgyvbh', ''),
-(NULL, 'FGS!SFTFCTU', 'qwdxftyvhbj', ''),
-(NULL, 'WPFNOSKC?IJ', 'fsdghvb', ''),
-(NULL, 'LL54TQPDV28', 'azertyuio', ''),
-(NULL, 'MFD217C8RX1', 'zwexrtcfygvhj ', ''),
-(NULL, 'QHRWR?IWJWV', 'edtrfgvyubjk,l', ''),
-(NULL, 'FGD3LQM56S2', 'lautretest', ''),
-(NULL, 'PIJE4RGIIOJ', 'autre', ''),
-(NULL, 'T2NFOEWU8VA', 'gaston', ''),
-(NULL, '9LEWQMJXPRN', 'letest', '');
+INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMotDePasse`) VALUES
+(NULL, '3VG?DLH8OKO', 'Eliott', 'test'),
+(NULL, 'MFD217C8RX1', 'Adrien ', 'test2'),
+(NULL, 'T2NFOEWU8VA', 'Gaston', 'test3'),
+(NULL, '9LEWQMJXPRN', 'LePatron', 'test4');
 COMMIT;
 
 
