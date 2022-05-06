@@ -87,6 +87,15 @@
     margin-top:2%;
     margin-left:15%;
 }
+
+.sup_cookie{
+    position:absolute;
+    margin-left:90%;
+}
+
+.fin{
+    margin-top:20%;
+}
 /* =================================================================*/
 /* =================================================================*/
 
@@ -130,6 +139,15 @@
     position: absolute;
     top: 4%;
     left: 5%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    border-color: black;
+    border-style:solid;
+    border-width: 2px;
+    border-spacing: 10px
 }
 
 

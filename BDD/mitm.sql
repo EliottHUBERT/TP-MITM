@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMessage`) VALUES
+INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMotDePasse`) VALUES
 (NULL, '3VG?DLH8OKO', 'Eliott', 'test'),
 (NULL, 'MFD217C8RX1', 'Adrien ', 'test2'),
 (NULL, 'T2NFOEWU8VA', 'Gaston', 'test3'),

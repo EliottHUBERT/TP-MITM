@@ -19,12 +19,14 @@ if (isset($_COOKIE['IDUtilisateur'])) {
         <link href="../Styles/styles.css" rel="stylesheet" type="text/css">
         <!-- <link href="../Styles/overflow.css" rel="stylesheet" type="text/css"> -->
         <title> Interface Eleve </title>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
         function scrolldiv() {//permet de scroll en bas de la console dàe réponse
             document.getElementById('scroll').scrollTop = 99999999999999;
         }
-</script>
+</script> -->
     </head>
+    <a href='../briefing.php' target='_blank'>Briefing</a>
+    
     <body onload="scrolldiv()">
         <div id="requete">
             <form method="post">
@@ -131,7 +133,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
                 if (isset($_COOKIE['id'])) {
                     $idrep = $_COOKIE['id'];
                 }
-                    foreach(range(0, 100)as $num){
+                    foreach(range(0, 100000)as $num){
                         if (isset($_COOKIE[$num])){
                         echo $_COOKIE[$num];
                         }
