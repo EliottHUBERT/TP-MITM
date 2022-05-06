@@ -31,12 +31,12 @@ if (isset($_COOKIE['IDUtilisateur'])) {
     
     <body onload="scrolldiv()">
         <div id="requete">
-            <form method="post">
+            <form method="post" action="./phase.php">
                 <select id="bouton actionBien" name="actionBien">
-                    <option value="valeur1" selected>Afficher les ID/Etudiants</option>
-                    <option value="valeur2">Etablir la communication avec un ID</option>
-                    <option value="valeur3">Identification via login / pass auprès d’un ID</option>
-                    <option value="valeur4">Message secret auprès d’un ID</option>
+                    <option value="1" selected>Afficher les ID/Etudiants</option>
+                    <option value="2">Etablir la communication avec un ID</option>
+                    <option value="3">Identification via login / pass auprès d’un ID</option>
+                    <option value="4">Message secret auprès d’un ID</option>
                 </select>
                 
                 <br>    
@@ -44,7 +44,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
                 
                 Entrez un message si besoin : <input type='text' name='message' placeholder="Entrer le message...">
                 
-
+                
                 
                 
                 
@@ -56,7 +56,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
             if (isset($_POST['actionBien'])) {
 
                 // Afficher les ID/Etudiants    
-                if($_POST['actionBien'] == "valeur1") {
+                if($_POST['actionBien'] == "1") {
                     $mysqli = new mysqli("localhost", "root", "", "mitm");
                     $requete = "SELECT * FROM utilisateur";
                     $resultat = $mysqli->query($requete);
@@ -71,10 +71,10 @@ if (isset($_COOKIE['IDUtilisateur'])) {
                     }
                     
                 }
-
-
+            
+                
                 //Etablir la communication avec un ID
-                elseif($_POST['actionBien'] == "valeur2") {
+                elseif($_POST['actionBien'] == "2") {
                     echo "Entrez l id si besoin : <input type='text' name='idEleve' placeholder='Entrer le id...'>";
                     if ($_POST["idEleve"] !== "") {
                         $idEleveCommunicant = $_POST["idEleve"];
@@ -102,13 +102,13 @@ if (isset($_COOKIE['IDUtilisateur'])) {
 
 
                 //Identification via login / pass auprès d’un ID 
-                if($_POST['actionBien'] == "valeur3") {
+                if($_POST['actionBien'] == "3") {
 
                 }
 
 
                 //Message secret auprès d’un ID : Envoie  du message a notre binome
-                elseif($_POST['actionBien'] == "valeur4" && $_POST["message"] !== "" && $_POST["idEleve"] !== "") {
+                elseif($_POST['actionBien'] == "4" && $_POST["message"] !== "" && $_POST["idEleve"] !== "") {
                     $MESId = $_COOKIE['IDUtilisateur'];
                     $idEleve = $_POST["idEleve"];
                     $message = $_POST["message"];
