@@ -3,6 +3,7 @@
 $idrep = 0;
 setcookie('id',$idrep);
 session_set_cookie_params(0);
+session_start();
 include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 //ini_set('display_errors', 'off');
@@ -28,8 +29,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
     <body onload="scrolldiv()">
         <div id="requete">
             <form method="post">
-                <select id="bouton" name="actionBien">
-                    <option value="valeur0"></option>
+                <select id="bouton actionBien" name="actionBien">
                     <option value="valeur1" selected>Afficher les ID/Etudiants</option>
                     <option value="valeur2">Etablir la communication avec un ID</option>
                     <option value="valeur3">Identification via login / pass auprès d’un ID</option>
@@ -124,5 +124,16 @@ if (isset($_COOKIE['IDUtilisateur'])) {
             </div>
         </div>
     </body>
-    
+    <script>
+        function getSelectValue(selectId)
+        {
+            /**On récupère l'élement html <select>*/
+            var selectElmt = document.getElementById(selectId);
+            
+            return selectElmt.options[selectElmt.selectedIndex].value;
+        }
+
+        var selectValue = getSelectValue('actionBien');
+        consol.log(selectValue);
+    </script>
 </html>

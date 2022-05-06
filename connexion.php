@@ -41,7 +41,7 @@
                     }
                     
                     formulaire_2($nom_utilisateur);
-
+                    $_SESSION['utilisateur'] = $nom_utilisateur;
                     $idutilisateur = generationID($nom_utilisateur,$connexion);
                     $requete = "INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMotDePasse`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
                     $larequete = mysqli_query($connexion,$requete);
@@ -129,6 +129,7 @@
                 return $idutilisateur;
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////
+            
             
         ?>
 </html>
