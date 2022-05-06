@@ -16,7 +16,7 @@
         <title>connexion</title>
         <link rel="stylesheet" href="Styles/styles.css" type="text/css" />
         
-    <button href='javascript:void(0)' onclick='clickMe()'>Supression cookie</button>
+    <button  href='javascript:void(0)' onclick='clickMe()'>Supression cookie</button>
     <script>
     function clickMe() {
         var result ="<?php php_func()?>"

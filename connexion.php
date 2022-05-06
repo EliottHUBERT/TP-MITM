@@ -15,25 +15,13 @@
 
         <?php
             
+            
             if(isset($_POST["nomutilisateur"])==False){
                 formulaire_1();
             }
             elseif(isset($_POST["nomutilisateur"])){
                 $nom_utilisateur=$_POST["nomutilisateur"];
                 
-                
-                // $les_utilisateurs=[];
-                // $requete = "SELECT `UTILLogin ` FROM `utilisateur` ;";
-                // $resultat = $connexion->query($requete);
-                // while ($ligne = $resultat->fetch_assoc()) {
-                //     array_push($les_utilisateurs,$ligne['login']);
-                // }
-                // //////////////////////////////////////////////////////////////
-                
-                // if(in_array($nom_utilisateur,$les_utilisateurs)==false){
-                //     $requete = "INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMessage`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
-                //     $larequete = mysqli_query($connexion,$requete);
-                // }
 
                 if(isset($_POST["nom_binome"])==false){
                     if($nom_utilisateur=='langloy'){ // Le nom peut etre changé
@@ -132,4 +120,6 @@
             ////////////////////////////////////////////////////////////////////////////////////////////////
             
         ?>
+
+        
 </html>
