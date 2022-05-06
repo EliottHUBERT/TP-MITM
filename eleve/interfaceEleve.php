@@ -23,6 +23,7 @@ $IDEleve = $_COOKIE['IDUtilisateur'];
         }
 </script>
     </head>
+    <a href='../briefing.php'>Briefing</a>
     <body onload="scrolldiv()">
         <div id="requete">
             <form method="post">
