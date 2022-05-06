@@ -5,6 +5,7 @@ setcookie('id',$idrep);
 session_set_cookie_params(0);
 include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
+
 //ini_set('display_errors', 'off');
 if (isset($_COOKIE['IDUtilisateur'])) {
     $IDEleve = $_COOKIE['IDUtilisateur'];
@@ -129,7 +130,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
                 }
                     foreach(range(0, 100000)as $num){
                         if (isset($_COOKIE[$num])){
-                        echo $_COOKIE[$num];
+                        echo $_COOKIE[$num] ;
                         }
                     }
                 ?><br></p>
