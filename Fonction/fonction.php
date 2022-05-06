@@ -38,6 +38,8 @@ function verifip(){
     $ipserveur=$_SERVER['SERVER_ADDR'];
     if ($ip==$ipserveur){
         return TRUE;
+    }else{
+        return FALSE;
     }
 }
 

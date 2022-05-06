@@ -44,7 +44,7 @@
                     formulaire_2($nom_utilisateur);
 
                     $idutilisateur = generationID($nom_utilisateur,$connexion);
-                    $requete = "INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMessage`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
+                    $requete = "INSERT INTO `utilisateur` (`UTILId`, `UTILIdEleve`, `UTILLogin`, `UTILMotDePasse`) VALUES (null, '$idutilisateur', '$nom_utilisateur', '');";
                     $larequete = mysqli_query($connexion,$requete);
                 }
                 elseif(isset($_POST["nom_binome"])){
@@ -77,7 +77,7 @@
 
 
                         $messagesecret=$_POST["messagesecret"];
-                        $requete = "UPDATE `utilisateur` SET `UTILMessage` = '$messagesecret' WHERE `utilisateur`.`UTILId` = '$votreid';";
+                        $requete = "UPDATE `utilisateur` SET `UTILMotDePasse` = '$messagesecret' WHERE `utilisateur`.`UTILId` = '$votreid';";
                         $larequete = mysqli_query($connexion,$requete);
                         header("Location:eleve/interfaceEleve.php");
                     }
