@@ -11,11 +11,10 @@
     </head>
     <body> 
         
-        
-        
         <a href='briefing.php'>Briefing</a>
 
         <?php
+            
             
             if(isset($_POST["nomutilisateur"])==False){
                 formulaire_1();
