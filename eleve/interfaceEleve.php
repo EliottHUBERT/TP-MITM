@@ -1,5 +1,5 @@
 <?php
-//header("Refresh:1");
+header("Refresh");
 $idrep = 0;
 setcookie('id',$idrep);
 session_set_cookie_params(0);
@@ -41,22 +41,12 @@ if (isset($_COOKIE['IDUtilisateur'])) {
                 </label>
                 <br>    
                 <br>
-                <div class="result"></div>
-                <script>
-                    const selectElement = document.querySelector('.actionBien');
-
-                    if (selectElement == "valeur1") {
-                        alert('test');
-                    }
-                    selectElement.addEventListener('change', (event) => {
-                    const result = document.querySelector('.result');
-                    result.textContent = `You like ${event.target.value}`;
-                    });
-                </script>
+                
+                Entrez un message si besoin : <input type='text' name='message' placeholder="Entrer le message...">
+                
 
                 
-                Entrez l'id si besoin : <input type='text' name='idEleve'>
-                Entrez un message si besoin : <input type='text' name='message'>
+                
                 
                 <input type="submit" value="Valider">
             </form>
@@ -84,27 +74,30 @@ if (isset($_COOKIE['IDUtilisateur'])) {
 
 
                 //Etablir la communication avec un ID
-                elseif($_POST['actionBien'] == "valeur2" && $_POST["idEleve"] !== "") {
-                    $idEleveCommunicant = $_POST["idEleve"];
+                elseif($_POST['actionBien'] == "valeur2") {
+                    echo "Entrez l id si besoin : <input type='text' name='idEleve' placeholder='Entrer le id...'>";
+                    if ($_POST["idEleve"] !== "") {
+                        $idEleveCommunicant = $_POST["idEleve"];
 
-                    $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$IDEleve' AND `idEleve2` = '$idEleveCommunicant';";
-                    $presence_com = mysqli_query($con, $requete_presence_com);
-                    $idrep = $_COOKIE['id'];
-                    if(mysqli_num_rows($presence_com)) {
-                        $reponse ='la communication est déjà établie avec cet id<br>';
-                        setcookie($idrep, $reponse, time()+3600*24);
-                        $idrep = $idrep + 1;
-                        setcookie('id', $idrep);
-                    } 
-                    else { 
-                        $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$IDEleve', '$idEleveCommunicant');";
-                        $result = mysqli_query($con, $requete1);
-                        $reponse ='communication établie<br>';
-                        setcookie($idrep, $reponse, time()+3600*24);
-                        $idrep = $idrep + 1;
-                        setcookie('id', $idrep);
-                    }
+                        $requete_presence_com = "SELECT * FROM `communication` WHERE `idEleve1` = '$IDEleve' AND `idEleve2` = '$idEleveCommunicant';";
+                        $presence_com = mysqli_query($con, $requete_presence_com);
+                        $idrep = $_COOKIE['id'];
+                        if(mysqli_num_rows($presence_com)) {
+                            $reponse ='la communication est déjà établie avec cet id<br>';
+                            setcookie($idrep, $reponse, time()+3600*24);
+                            $idrep = $idrep + 1;
+                            setcookie('id', $idrep);
+                        } 
+                        else { 
+                            $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$IDEleve', '$idEleveCommunicant');";
+                            $result = mysqli_query($con, $requete1);
+                            $reponse ='communication établie<br>';
+                            setcookie($idrep, $reponse, time()+3600*24);
+                            $idrep = $idrep + 1;
+                            setcookie('id', $idrep);
+                        }
                     
+                    }
                 }
 
 
@@ -124,6 +117,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
 
                 }
             }
+
         ?>
         
         <div class="console_reponse" id="scroll">
