@@ -53,7 +53,7 @@ $IDEleve = "I3U2C9JPLNM";
                     $idrep = $_COOKIE['id'];
                     while ($ligne = $resultat->fetch_assoc()) {
                         $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
-                        setcookie($idrep, $reponse);
+                        setcookie($idrep, $reponse, time()+3600*24);
                         $idrep = $idrep + 1;
                         setcookie('id', $idrep);
                     }
@@ -70,7 +70,7 @@ $IDEleve = "I3U2C9JPLNM";
                     $idrep = $_COOKIE['id'];
                     if(mysqli_num_rows($presence_com)) {
                         $reponse ='la communication est déjà établie avec cet id<br>';
-                        setcookie($idrep, $reponse);
+                        setcookie($idrep, $reponse, time()+3600*24);
                         $idrep = $idrep + 1;
                         setcookie('id', $idrep);
                     } 
@@ -78,7 +78,7 @@ $IDEleve = "I3U2C9JPLNM";
                         $requete1 = "INSERT INTO `communication` (`idCommunication`, `idEleve1`, `idEleve2`) VALUES (NULL, '$IDEleve', '$idEleveCommunicant');";
                         $result = mysqli_query($con, $requete1);
                         $reponse ='communication établie<br>';
-                        setcookie($idrep, $reponse);
+                        setcookie($idrep, $reponse, time()+3600*24);
                         $idrep = $idrep + 1;
                         setcookie('id', $idrep);
                     }
@@ -104,12 +104,9 @@ $IDEleve = "I3U2C9JPLNM";
                 <br>
                 <p><?php 
                     $idrep = $_COOKIE['id'];
-                    foreach(range(0, 100)as $num){
+                    foreach(range(0, 500000)as $num){
                         if (isset($_COOKIE[$num])){
                         echo $_COOKIE[$num];
-                        }
-                        else{
-                            return;
                         }
                     }
                 ?><br></p>
