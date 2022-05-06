@@ -26,6 +26,7 @@ if (isset($_COOKIE['IDUtilisateur'])) {
 </script> -->
     </head>
     <a href='../briefing.php' target='_blank'>Briefing</a>
+    
     <body onload="scrolldiv()">
         <div id="requete">
             <form method="post">

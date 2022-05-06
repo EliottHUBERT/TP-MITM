@@ -12,7 +12,7 @@
     <body> 
         
         <a href='briefing.php' target='_blank'>Briefing</a>
-
+        
         <?php
             
 
