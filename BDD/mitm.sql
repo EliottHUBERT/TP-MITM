@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `UTILId` int(11) NOT NULL AUTO_INCREMENT,
   `UTILIdEleve` varchar(16) NOT NULL,
   `UTILLogin` varchar(20) NOT NULL,
-  `UTILMessage` varchar(255) NOT NULL,
+  `UTILMotDePasse` varchar(255) NOT NULL,
   PRIMARY KEY (`UTILId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 

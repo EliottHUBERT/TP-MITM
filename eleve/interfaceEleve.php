@@ -6,8 +6,9 @@ session_set_cookie_params(0);
 include ('../Fonction/fonction.php');
 $con = mysqli_connect('localhost','root','','mitm');
 //ini_set('display_errors', 'off');
-$IDEleve = $_COOKIE['IDUtilisateur'];
-
+if (isset($_COOKIE['IDUtilisateur'])) {
+    $IDEleve = $_COOKIE['IDUtilisateur'];
+}
 
 ?>
 
@@ -54,7 +55,7 @@ $IDEleve = $_COOKIE['IDUtilisateur'];
                     $resultat = $mysqli->query($requete);
                     $idrep = $_COOKIE['id'];
                     while ($ligne = $resultat->fetch_assoc()) {
-                        $reponse = $ligne['idEleve'] . ' ' . $ligne['login'] . '<br>';
+                        $reponse = $ligne['UTILIdEleve'] . ' ' . $ligne['UTILLogin'] . '<br>';
                         setcookie($idrep, $reponse, time()+3600*24);
                         $idrep = $idrep + 1;
                         setcookie('id', $idrep);
